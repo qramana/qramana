@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "lib": ["es6"],
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "outDir": "./lib",
+    "declaration": true
+  },
+  "files": [
+    "./node_modules/jsqubits.d.ts/jsqubits.d.ts",
+    "./src/index.ts"
+  ]
+}

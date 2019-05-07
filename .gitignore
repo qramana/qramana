@@ -1,0 +1,7 @@
+*.log
+node_modules
+package-lock.json
+/lib
+/tmp
+/src/**/*.js
+/test/**/*.js
