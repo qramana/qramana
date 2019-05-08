@@ -5,6 +5,5 @@ export enum QuantmOperationTypes {
     X,
     Z,
     H,
-    CNOT,
-    Measure
+    CNOT
 }

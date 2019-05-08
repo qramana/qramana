@@ -38,9 +38,11 @@ export class QuantumStateJsqubits extends QuantumState {
     }
 
     measure(bitId: number): MeasurementResult {
+        const measurementResult = this._qstate.measure(bitId);
+        this._qstate = measurementResult.newState;
         return {
             newQuantumState: this,
-            result: true
+            result: measurementResult.result
         }
     }
 

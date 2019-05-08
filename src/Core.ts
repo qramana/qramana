@@ -86,6 +86,14 @@ export class Core {
     }
 
     /**
+     * 単一量子ビットのZ基底測定
+     */
+    requestMeasure(qubit: Qubit): number {
+        const qubitMapElement = this._lookupQuantumStateFromQubit(qubit)
+        return this._measureQubit(qubitMapElement);
+    }
+
+    /**
      * 単一量子ビットの量子操作
      */
     _requestOperationSingleQubit(quantmOperationType: QuantmOperationTypes, mapElement: QubitQuantumStateMapElement) {
@@ -102,6 +110,14 @@ export class Core {
             default:
                 // no match operation
         }
+    }
+
+    /**
+     * 単一量子ビットのZ基底測定
+     */
+    _measureQubit(mapElement: QubitQuantumStateMapElement): number {
+        const measurementResult = mapElement.quantumState.measure(mapElement.bitId);
+        return measurementResult.result;
     }
 
     /**
