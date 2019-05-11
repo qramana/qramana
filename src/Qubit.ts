@@ -15,7 +15,7 @@ export interface QubitParameter {
 export class Qubit {
 
     /**
-     * ライブラリの初期化時に代入される、QubitとQuantumStateを紐づける管理クラス
+     * ライブラリの初期化時に代入されるQubitとQuantumStateを紐づける管理クラス
      * Qubitに対する量子操作リクエストは、Coreを通して量子状態の実態に反映される
      */
     static _core: Core;
@@ -39,7 +39,7 @@ export class Qubit {
 
     /**
      * CNOT操作
-     * 標的量子ビットは自動的にメソッド元のQubitが指定される
+     * 標的量子ビットにはメソッド呼び出し元のQubitが指定される
      * 
      * @param controlQubit 制御量子ビット
      */
@@ -49,12 +49,17 @@ export class Qubit {
     }
 
     /**
-     * 
+     * 量子ビットをZ基底で測定する
+     * 返り値には0または1状態の測定結果が入る
      */
     measure(): number {
         return Qubit._core.requestMeasure(this);
     }
 
+    /**
+     * 量子ビットのダンプを返す
+     * 文字列の形式はQuantumStateの実装によって不定であり、 ライブラリユーザは形式に依存するべきではない
+     */
     toString(): string {
         return Qubit._core.toStringQubit(this);
     }

@@ -80,7 +80,6 @@ export class Core {
                     this._mergeQubitMapElement(controlQubitMapElement, targetQubitMapElement);
                 }
                 targetQubitMapElement.quantumState.cnot(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
-
                 break;
             default:
                 // no match operation
@@ -142,7 +141,6 @@ export class Core {
      */
     _mergeQubitMapElement(mapElementLeft: QubitQuantumStateMapElement, mapElementRight: QubitQuantumStateMapElement): void {
         // テンソル積の左側の量子ビット数
-        const mapElementLeftLength = mapElementLeft.quantumState.length;
         const mapElementRightLength = mapElementRight.quantumState.length;
 
         // マージ前に、マージによってQuantumStateの更新が必要なmapElementをリスト化する
