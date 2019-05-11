@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc -p ./",
+    "build:e": "tsc -p ./examples",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
