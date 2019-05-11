@@ -59,4 +59,11 @@ export abstract class QuantumState {
      */
     abstract get length(): number;
     // abstract set length();
+
+    /**
+     * QuantumStateのダンプを文字列化して返す
+     * 文字列の形式はQuantumStateの実装によって不定であり、
+     * ライブラリユーザは形式に依存するべきではない
+     */
+    abstract toString(): string;
 }

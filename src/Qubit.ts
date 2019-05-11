@@ -22,7 +22,7 @@ export class Qubit {
 
     constructor(param: QubitParameter) {
         // CoreにQubitを登録する
-        Qubit._core.addNewQubit(this, param);
+        Qubit._core.createNewQubit(this, param);
     }
 
     x() {
@@ -49,10 +49,14 @@ export class Qubit {
     }
 
     /**
-     * todo: 実装
+     * 
      */
     measure(): number {
         return Qubit._core.requestMeasure(this);
+    }
+
+    toString(): string {
+        return Qubit._core.toStringQubit(this);
     }
 
 }
