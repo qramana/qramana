@@ -61,7 +61,7 @@ export class Core {
 
     requestOperation(quantmOperationType: QuantmOperationTypes, ...qubits: Qubit[]) {
         // qubitsの順序で紐づいたQubitQuantumStateMapElementを取得する
-        const qubitMapElements = qubits.map(qubit => this._lookupQuantumStateFromQubit(qubit));
+        const qubitMapElements = qubits.map(qubit => this._lookupQubitQuantumStateMapElementFromQubit(qubit));
 
         // todo: 全ての量子操作に対してメソッドを個別に用意するのは冗長だが、switch文が伸びるのも読みづらいので、ある程度の粒度で分けたい
         switch (quantmOperationType) {
@@ -89,7 +89,7 @@ export class Core {
      * 単一量子ビットのZ基底測定
      */
     requestMeasure(qubit: Qubit): number {
-        const qubitMapElement = this._lookupQuantumStateFromQubit(qubit)
+        const qubitMapElement = this._lookupQubitQuantumStateMapElementFromQubit(qubit)
         return this._measureQubit(qubitMapElement);
     }
 
@@ -123,7 +123,7 @@ export class Core {
     /**
      * 引数のQubitを持つQubitQuantumStateMapElementを返す
      */
-    _lookupQuantumStateFromQubit(qubit: Qubit) {
+    _lookupQubitQuantumStateMapElementFromQubit(qubit: Qubit) {
         return this._mapQubitQuantumState.find((mapElement) => mapElement.qubit === qubit);
         // todo: findできなかったケースのハンドリング
     }
@@ -132,7 +132,7 @@ export class Core {
      * QuantumStateをマージし、合成系を生成する
      * マージされた後、 新しく生成されたQuantumStateとQubitを紐づけて再登録する
      */
-    _mergeQubitMapElement(mapElementLeft: QubitQuantumStateMapElement, mapElementRight: QubitQuantumStateMapElement) {
+    _mergeQubitMapElement(mapElementLeft: QubitQuantumStateMapElement, mapElementRight: QubitQuantumStateMapElement): void {
         // テンソル積の左側の量子ビット数
         const mapElementLeftLength = mapElementLeft.quantumState.length;
 
