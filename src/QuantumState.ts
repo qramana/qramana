@@ -3,7 +3,7 @@
  */
 export interface MeasurementResult {
     newQuantumState: QuantumState;
-    result: boolean; // 暫定
+    result: number; // 暫定
 }
 
 /**

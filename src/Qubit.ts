@@ -52,7 +52,7 @@ export class Qubit {
      * todo: 実装
      */
     measure(): number {
-        return 0;
+        return Qubit._core.requestMeasure(this);
     }
 
 }
