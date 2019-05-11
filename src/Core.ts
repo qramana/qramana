@@ -73,18 +73,13 @@ export class Core {
                 this._requestOperationSingleQubit(quantmOperationType, mapElement);
                 break;
             case QuantmOperationTypes.CNOT:
-            console.log("REQ, qubit0", qubits[0].toString(), "qubit1", qubits[1].toString());
                 const controlQubitMapElement = qubitMapElements[0];
                 const targetQubitMapElement = qubitMapElements[1];
-                console.log("CNOT-opr", controlQubitMapElement.quantumState.toString(), targetQubitMapElement.quantumState.toString())
                 // CNOT対象量子ビットが合成系ではない場合、先にマージして合成系のQuantumState化する
                 if (controlQubitMapElement.quantumState !== targetQubitMapElement.quantumState) {
                     this._mergeQubitMapElement(controlQubitMapElement, targetQubitMapElement);
                 }
-                console.log("CNOT", controlQubitMapElement.bitId, targetQubitMapElement.bitId, controlQubitMapElement.quantumState === targetQubitMapElement.quantumState)
-                console.log("CNOT-state", JSON.stringify(targetQubitMapElement.quantumState.toString()), JSON.stringify(controlQubitMapElement.quantumState.toString()));
                 targetQubitMapElement.quantumState.cnot(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
-                console.log("CNOT-state", JSON.stringify(targetQubitMapElement.quantumState.toString()), JSON.stringify(controlQubitMapElement.quantumState.toString()));
 
                 break;
             default:
@@ -156,9 +151,7 @@ export class Core {
         const rightTensorQuantumStateMapElements = this._mapQubitQuantumState.filter((mapElement) => mapElement.quantumState === mapElementRight.quantumState);
 
         // マージされたQuantumStateの生成
-        console.log("MERGING, ", mapElementLeft.quantumState.toString(), mapElementRight.quantumState.toString())
         const mergedQuantumState = mapElementLeft.quantumState.merge(mapElementRight.quantumState);
-        console.log("MERGED", mergedQuantumState.toString())
 
         // 新しいQuantumStateを、古いQuantumStateを参照しているQubitQuantumStateMapElementに適用する
         leftTensorQuantumStateMapElements.forEach((mapElement) => {mapElement.quantumState = mergedQuantumState});
