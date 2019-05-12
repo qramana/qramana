@@ -24,6 +24,7 @@ interface QubitQuantumStateMapElement {
 
     /**
      * そのqubitがquantumStateの何番目の量子ビットを表現しているか
+     * bitIdは配列のlengthとアサイン規則が異なり、|3210>のように右端を起点とし、左に数える
      */
     bitId: number;
 
@@ -49,7 +50,7 @@ export class Core {
      * Qubitが新しく生成されたとき、Qubitから呼ばれる
      * 生成されたQubitに紐づく新しいQuantumStateを生成し、Core管理下に加える
      */
-    addNewQubit(qubit: Qubit, param: QubitParameter) {
+    createNewQubit(qubit: Qubit, param: QubitParameter) {
         // Qubitの初期化パラメータから、QuantumStateを生成する
         const quantumState = this._quantumStateGenerator(param.value);
         this._mapQubitQuantumState.push({
@@ -78,7 +79,7 @@ export class Core {
                 if (controlQubitMapElement.quantumState !== targetQubitMapElement.quantumState) {
                     this._mergeQubitMapElement(controlQubitMapElement, targetQubitMapElement);
                 }
-                mapElement.quantumState.cnot(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
+                targetQubitMapElement.quantumState.cnot(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
                 break;
             default:
                 // no match operation
@@ -89,8 +90,13 @@ export class Core {
      * 単一量子ビットのZ基底測定
      */
     requestMeasure(qubit: Qubit): number {
-        const qubitMapElement = this._lookupQubitQuantumStateMapElementFromQubit(qubit)
+        const qubitMapElement = this._lookupQubitQuantumStateMapElementFromQubit(qubit);
         return this._measureQubit(qubitMapElement);
+    }
+
+    toStringQubit(qubit: Qubit): string {
+        const qubitMapElement = this._lookupQubitQuantumStateMapElementFromQubit(qubit);
+        return qubitMapElement.quantumState.toString();
     }
 
     /**
@@ -131,10 +137,11 @@ export class Core {
     /**
      * QuantumStateをマージし、合成系を生成する
      * マージされた後、 新しく生成されたQuantumStateとQubitを紐づけて再登録する
+     * todo: argsを配列にしてもよいか検討
      */
     _mergeQubitMapElement(mapElementLeft: QubitQuantumStateMapElement, mapElementRight: QubitQuantumStateMapElement): void {
         // テンソル積の左側の量子ビット数
-        const mapElementLeftLength = mapElementLeft.quantumState.length;
+        const mapElementRightLength = mapElementRight.quantumState.length;
 
         // マージ前に、マージによってQuantumStateの更新が必要なmapElementをリスト化する
         // bitIdの扱いが異なるため、リストはテンソル積の左・右を別個に持つ必要がある
@@ -149,6 +156,6 @@ export class Core {
         rightTensorQuantumStateMapElements.forEach((mapElement) => {mapElement.quantumState = mergedQuantumState});
 
         // QuantumStateの更新で、テンソル積の右側はbitIdが動くので更新する
-        leftTensorQuantumStateMapElements.forEach(mapElement => mapElement.bitId = mapElement.bitId + mapElementLeftLength);
+        leftTensorQuantumStateMapElements.forEach(mapElement => mapElement.bitId = mapElement.bitId + mapElementRightLength);
     }
 }

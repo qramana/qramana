@@ -22,19 +22,19 @@ export class QuantumStateJsqubits extends QuantumState {
     };
 
     x(bitId: number) {
-        this._qstate.X(bitId);
+        this._qstate = this._qstate.X(bitId);
     }
 
     z(bitId: number) {
-        this._qstate.Z(bitId);
+        this._qstate = this._qstate.Z(bitId);
     }
 
     h(bitId: number) {
-        this._qstate.hadamard(bitId);
+        this._qstate = this._qstate.hadamard(bitId);
     }
 
     cnot(controllBitId: number, targetBitId: number) {
-        this._qstate.cnot(controllBitId, targetBitId);
+        this._qstate = this._qstate.cnot(controllBitId, targetBitId);
     }
 
     measure(bitId: number): MeasurementResult {
@@ -47,11 +47,15 @@ export class QuantumStateJsqubits extends QuantumState {
     }
 
     merge(quantumState: QuantumStateJsqubits): QuantumStateJsqubits {
-        this._qstate.tensorProduct(quantumState._qstate);
+        this._qstate = this._qstate.tensorProduct(quantumState._qstate);
         return this;
     }
 
     get length() {
         return this._qstate.numBits();
+    }
+
+    toString() {
+        return this._qstate.toString();
     }
 }
