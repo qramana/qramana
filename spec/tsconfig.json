@@ -8,7 +8,7 @@
     "outDir": "./build"
   },
   "files": [
-      "../node_modules/@types/jest/index.d.ts",
+    "../node_modules/@types/jest/index.d.ts",
     "../lib/index.d.ts",
     "src/spec.ts"
   ]
