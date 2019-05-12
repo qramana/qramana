@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es6"],
+    "declaration": false,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "outDir": "./build"
+  },
+  "files": [
+      "../node_modules/@types/jest/index.d.ts",
+    "../lib/index.d.ts",
+    "src/spec.ts"
+  ]
+}

@@ -3,6 +3,7 @@ node_modules
 package-lock.json
 lib
 tmp
+spec/build
 src/**/*.js
-test/**/*.js
+spec/build/
 examples/**/*.js

@@ -20,11 +20,11 @@ export type QuantumStateGenerator = (param: QuantumStateParameter) => QuantumSta
 /**
  * 量子ビットの状態ベクトルを表現する抽象クラス
  * 1つ以上の量子ビットを管理し、操作・測定を行うインターフェイスを持つ
- * 
+ *
  * ユーザは、QuantumStateを実装したクラスを用意するか、DefaultQuantumStateを利用する
  */
 export abstract class QuantumState {
-    constructor(param: QuantumStateParameter){ /** abstract */};
+    constructor(param: QuantumStateParameter) { /** abstract */ }
 
     /**
      * @param bitId 操作の対象となる量子ビットの識別ID

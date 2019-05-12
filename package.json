@@ -5,14 +5,22 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc -p ./",
-    "build:e": "tsc -p ./examples",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:example": "tsc -p ./example",
+    "test": "npm run test:build && npm run test:jest",
+    "test:build": "tsc -p ./spec",
+    "test:jest": "jest",
+    "lint": "npm run lint:src",
+    "lint:src": "tslint -c tslint.json jsqubits.d.ts src/*.ts src/**/*.ts --project ./tsconfig.json",
+    "lint:spec": "tslint -c tslint.json jsqubits.d.ts spec/*.ts spec/**/*.ts --project ./spec/tsconfig.json"
   },
   "keywords": [],
   "author": "",
   "license": "",
   "devDependencies": {
-    "typescript": "^2.9.2"
+    "@types/jest": "^24.0.11",
+    "jest": "^24.1.0",
+    "tslint": "^5.4.3",
+    "typescript": "^3.0.0"
   },
   "dependencies": {
     "jsqubits": "^1.1.0"

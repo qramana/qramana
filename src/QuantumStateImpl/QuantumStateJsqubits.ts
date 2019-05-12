@@ -6,7 +6,7 @@ import * as jsq from "jsqubits";
  */
 export const quantumStateJsQubitsGenerator: QuantumStateGenerator = function(param: QuantumStateParameter) {
     return new QuantumStateJsqubits(param);
-}
+};
 
 /**
  * QuantumStateのjsqubits実装
@@ -18,8 +18,7 @@ export class QuantumStateJsqubits extends QuantumState {
     constructor(param: QuantumStateParameter) {
         super(param);
         this._qstate = jsq.jsqubits(param); // stringで生成しているけど変えたい
-        var zero = jsq.jsqubits.Complex.ZERO;
-    };
+    }
 
     x(bitId: number) {
         this._qstate = this._qstate.X(bitId);
@@ -43,7 +42,7 @@ export class QuantumStateJsqubits extends QuantumState {
         return {
             newQuantumState: this,
             result: measurementResult.result
-        }
+        };
     }
 
     merge(quantumState: QuantumStateJsqubits): QuantumStateJsqubits {
