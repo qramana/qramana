@@ -10,9 +10,9 @@
     "test": "npm run build && npm run test:build && npm run test:jest",
     "test:build": "tsc -p ./spec",
     "test:jest": "jest",
-    "lint": "npm run lint:src",
-    "lint:src": "tslint -c tslint.json jsqubits.d.ts src/*.ts src/**/*.ts --project ./tsconfig.json",
-    "lint:spec": "tslint -c tslint.json jsqubits.d.ts spec/*.ts spec/**/*.ts --project ./spec/tsconfig.json"
+    "lint": "npm run lint:src && npm run lint:spec",
+    "lint:src": "tslint -c tslint.json src/*.ts src/**/*.ts --project ./tsconfig.json",
+    "lint:spec": "tslint -c tslint.json spec/*.ts spec/**/*.ts --project ./spec/tsconfig.json"
   },
   "keywords": [],
   "author": "",
