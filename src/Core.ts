@@ -9,7 +9,7 @@ export interface CoreConfig {
     /**
      * QuantumStateインスタンスのジェネレータ
      */
-    quantumStateGenerator: QuantumStateGenerator
+    quantumStateGenerator: QuantumStateGenerator;
 }
 
 /**
@@ -103,7 +103,7 @@ export class Core {
      * 単一量子ビットの量子操作
      */
     _requestOperationSingleQubit(quantmOperationType: QuantmOperationTypes, mapElement: QubitQuantumStateMapElement) {
-        switch(quantmOperationType) {
+        switch (quantmOperationType) {
             case QuantmOperationTypes.X:
                 mapElement.quantumState.x(mapElement.bitId);
                 break;
@@ -145,15 +145,17 @@ export class Core {
 
         // マージ前に、マージによってQuantumStateの更新が必要なmapElementをリスト化する
         // bitIdの扱いが異なるため、リストはテンソル積の左・右を別個に持つ必要がある
-        const leftTensorQuantumStateMapElements = this._mapQubitQuantumState.filter((mapElement) => mapElement.quantumState === mapElementLeft.quantumState);
-        const rightTensorQuantumStateMapElements = this._mapQubitQuantumState.filter((mapElement) => mapElement.quantumState === mapElementRight.quantumState);
+        const leftTensorQuantumStateMapElements =
+            this._mapQubitQuantumState.filter((mapElement) => mapElement.quantumState === mapElementLeft.quantumState);
+        const rightTensorQuantumStateMapElements =
+            this._mapQubitQuantumState.filter((mapElement) => mapElement.quantumState === mapElementRight.quantumState);
 
         // マージされたQuantumStateの生成
         const mergedQuantumState = mapElementLeft.quantumState.merge(mapElementRight.quantumState);
 
         // 新しいQuantumStateを、古いQuantumStateを参照しているQubitQuantumStateMapElementに適用する
-        leftTensorQuantumStateMapElements.forEach((mapElement) => {mapElement.quantumState = mergedQuantumState});
-        rightTensorQuantumStateMapElements.forEach((mapElement) => {mapElement.quantumState = mergedQuantumState});
+        leftTensorQuantumStateMapElements.forEach((mapElement) => {mapElement.quantumState = mergedQuantumState; });
+        rightTensorQuantumStateMapElements.forEach((mapElement) => {mapElement.quantumState = mergedQuantumState; });
 
         // QuantumStateの更新で、テンソル積の右側はbitIdが動くので更新する
         leftTensorQuantumStateMapElements.forEach(mapElement => mapElement.bitId = mapElement.bitId + mapElementRightLength);

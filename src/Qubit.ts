@@ -6,7 +6,7 @@ import { QuantmOperationTypes } from "./types";
  * Qubitの初期化パラメータ
  */
 export interface QubitParameter {
-    value: QuantumStateParameter
+    value: QuantumStateParameter;
 }
 
 /**
@@ -40,7 +40,7 @@ export class Qubit {
     /**
      * CNOT操作
      * 標的量子ビットにはメソッド呼び出し元のQubitが指定される
-     * 
+     *
      * @param controlQubit 制御量子ビット
      */
     cnot(controlQubit: Qubit) {
