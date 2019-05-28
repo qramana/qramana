@@ -24,6 +24,10 @@ export class QuantumStateJsqubits extends QuantumState {
         this._qstate = this._qstate.X(bitId);
     }
 
+    y(bitId: number) {
+        this._qstate = this._qstate.Y(bitId);
+    }
+
     z(bitId: number) {
         this._qstate = this._qstate.Z(bitId);
     }

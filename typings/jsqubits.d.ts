@@ -6,6 +6,7 @@ declare namespace jsqubits {
       multiply(amount: number | Complex): QState;
       tensorProduct(qstate: QState): QState;
       X(targetBits: number): QState;
+      Y(targetBits: number): QState;
       Z(targetBits: number): QState;
       hadamard(targetBits: number): QState;
       cnot(controlBits: number, targetBits: number): QState;

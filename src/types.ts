@@ -1,8 +1,9 @@
 /**
  * Plamanaがサポートする量子操作
  */
-export enum QuantmOperationTypes {
+export enum QuantumOperationTypes {
     X,
+    Y,
     Z,
     H,
     CNOT

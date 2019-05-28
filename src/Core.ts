@@ -1,6 +1,6 @@
 import { QuantumState, QuantumStateGenerator} from "./QuantumState";
 import { Qubit, QubitParameter } from "./Qubit";
-import { QuantmOperationTypes } from "./types";
+import { QuantumOperationTypes } from "./types";
 
 /**
  * Coreの初期化パラメータ
@@ -60,19 +60,20 @@ export class Core {
         });
     }
 
-    requestOperation(quantmOperationType: QuantmOperationTypes, ...qubits: Qubit[]) {
+    requestOperation(quantumOperationType: QuantumOperationTypes, ...qubits: Qubit[]) {
         // qubitsの順序で紐づいたQubitQuantumStateMapElementを取得する
         const qubitMapElements = qubits.map(qubit => this._lookupQubitQuantumStateMapElementFromQubit(qubit));
 
         // todo: 全ての量子操作に対してメソッドを個別に用意するのは冗長だが、switch文が伸びるのも読みづらいので、ある程度の粒度で分けたい
-        switch (quantmOperationType) {
-            case QuantmOperationTypes.X:
-            case QuantmOperationTypes.Z:
-            case QuantmOperationTypes.H:
+        switch (quantumOperationType) {
+            case QuantumOperationTypes.X:
+            case QuantumOperationTypes.Y:
+            case QuantumOperationTypes.Z:
+            case QuantumOperationTypes.H:
                 const mapElement = qubitMapElements[0]; // 単一量子ビットなので常にlength = 1
-                this._requestOperationSingleQubit(quantmOperationType, mapElement);
+                this._requestOperationSingleQubit(quantumOperationType, mapElement);
                 break;
-            case QuantmOperationTypes.CNOT:
+            case QuantumOperationTypes.CNOT:
                 const controlQubitMapElement = qubitMapElements[0];
                 const targetQubitMapElement = qubitMapElements[1];
                 // CNOT対象量子ビットが合成系ではない場合、先にマージして合成系のQuantumState化する
@@ -102,15 +103,18 @@ export class Core {
     /**
      * 単一量子ビットの量子操作
      */
-    _requestOperationSingleQubit(quantmOperationType: QuantmOperationTypes, mapElement: QubitQuantumStateMapElement) {
-        switch (quantmOperationType) {
-            case QuantmOperationTypes.X:
+    _requestOperationSingleQubit(quantumOperationType: QuantumOperationTypes, mapElement: QubitQuantumStateMapElement) {
+        switch (quantumOperationType) {
+            case QuantumOperationTypes.X:
                 mapElement.quantumState.x(mapElement.bitId);
                 break;
-            case QuantmOperationTypes.Z:
+            case QuantumOperationTypes.Y:
+                mapElement.quantumState.y(mapElement.bitId);
+                break;
+            case QuantumOperationTypes.Z:
                 mapElement.quantumState.z(mapElement.bitId);
                 break;
-            case QuantmOperationTypes.H:
+            case QuantumOperationTypes.H:
                 mapElement.quantumState.h(mapElement.bitId);
                 break;
             default:
