@@ -87,6 +87,28 @@ export class Core {
         }
     }
 
+    requestRotateOperation(quantumOperationType: QuantumOperationTypes, angle: number, qubit: Qubit) {
+        // 回転角を引数として必要とする操作は引数が異なるので分ける
+        // メモ：上手いことrequestOperationと引数が異なっても扱えないか……
+        const mapElement = this._lookupQubitQuantumStateMapElementFromQubit(qubit);
+        switch (quantumOperationType) {
+            case QuantumOperationTypes.R:
+                mapElement.quantumState.r(mapElement.bitId, angle);
+                break;
+            case QuantumOperationTypes.ROTATEX:
+                mapElement.quantumState.rx(mapElement.bitId, angle);
+                break;
+            case QuantumOperationTypes.ROTATEY:
+                mapElement.quantumState.ry(mapElement.bitId, angle);
+                break;
+            case QuantumOperationTypes.ROTATEX:
+                mapElement.quantumState.rz(mapElement.bitId, angle);
+                break;
+            default:
+                // no match operation
+        }
+    }
+
     /**
      * 単一量子ビットのZ基底測定
      */

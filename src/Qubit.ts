@@ -37,6 +37,10 @@ export class Qubit {
         Qubit._core.requestOperation(QuantumOperationTypes.Z, this);
     }
 
+    r(angle: number) {
+        Qubit._core.requestRotateOperation(QuantumOperationTypes.R, angle, this);
+    }
+
     h() {
         Qubit._core.requestOperation(QuantumOperationTypes.H, this);
     }
@@ -50,6 +54,18 @@ export class Qubit {
     cnot(controlQubit: Qubit) {
         Qubit._core.requestOperation(QuantumOperationTypes.CNOT, controlQubit, this);
 
+    }
+
+    rotateX(angle: number) {
+        Qubit._core.requestRotateOperation(QuantumOperationTypes.ROTATEX, angle, this);
+    }
+
+    rotateY(angle: number) {
+        Qubit._core.requestRotateOperation(QuantumOperationTypes.ROTATEY, angle, this);
+    }
+
+    rotateZ(angle: number) {
+        Qubit._core.requestRotateOperation(QuantumOperationTypes.ROTATEZ, angle, this);
     }
 
     /**

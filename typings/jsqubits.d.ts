@@ -8,8 +8,12 @@ declare namespace jsqubits {
       X(targetBits: number): QState;
       Y(targetBits: number): QState;
       Z(targetBits: number): QState;
+      r(targetBits: number, angle: number): QState;
       hadamard(targetBits: number): QState;
       cnot(controlBits: number, targetBits: number): QState;
+      rotateX(targetBits: number, angle: number): QState;
+      rotateY(targetBits: number, angle: number): QState;
+      rotateZ(targetBits: number, angle: number): QState;
       toString(): string;
       numBits(): number;
       measure(bits: number | number[] | jsqubits.ALL | MeasureBitsRange): Measurement;
