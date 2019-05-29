@@ -1,6 +1,6 @@
 import { Core } from "./Core";
 import { QuantumStateParameter } from "./QuantumState";
-import { QuantmOperationTypes } from "./types";
+import { QuantumOperationTypes } from "./types";
 
 /**
  * Qubitの初期化パラメータ
@@ -26,15 +26,19 @@ export class Qubit {
     }
 
     x() {
-        Qubit._core.requestOperation(QuantmOperationTypes.X, this);
+        Qubit._core.requestOperation(QuantumOperationTypes.X, this);
+    }
+
+    y() {
+        Qubit._core.requestOperation(QuantumOperationTypes.Y, this);
     }
 
     z() {
-        Qubit._core.requestOperation(QuantmOperationTypes.Z, this);
+        Qubit._core.requestOperation(QuantumOperationTypes.Z, this);
     }
 
     h() {
-        Qubit._core.requestOperation(QuantmOperationTypes.H, this);
+        Qubit._core.requestOperation(QuantumOperationTypes.H, this);
     }
 
     /**
@@ -44,7 +48,7 @@ export class Qubit {
      * @param controlQubit 制御量子ビット
      */
     cnot(controlQubit: Qubit) {
-        Qubit._core.requestOperation(QuantmOperationTypes.CNOT, controlQubit, this);
+        Qubit._core.requestOperation(QuantumOperationTypes.CNOT, controlQubit, this);
 
     }
 
