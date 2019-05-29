@@ -69,6 +69,8 @@ export class Core {
             case QuantumOperationTypes.X:
             case QuantumOperationTypes.Y:
             case QuantumOperationTypes.Z:
+            case QuantumOperationTypes.S:
+            case QuantumOperationTypes.T:
             case QuantumOperationTypes.H:
                 const mapElement = qubitMapElements[0]; // 単一量子ビットなので常にlength = 1
                 this._requestOperationSingleQubit(quantumOperationType, mapElement);
@@ -135,6 +137,12 @@ export class Core {
                 break;
             case QuantumOperationTypes.Z:
                 mapElement.quantumState.z(mapElement.bitId);
+                break;
+            case QuantumOperationTypes.S:
+                mapElement.quantumState.s(mapElement.bitId);
+                break;
+            case QuantumOperationTypes.T:
+                mapElement.quantumState.t(mapElement.bitId);
                 break;
             case QuantumOperationTypes.H:
                 mapElement.quantumState.h(mapElement.bitId);

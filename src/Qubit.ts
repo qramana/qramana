@@ -41,6 +41,14 @@ export class Qubit {
         Qubit._core.requestRotateOperation(QuantumOperationTypes.R, angle, this);
     }
 
+    s() {
+        Qubit._core.requestOperation(QuantumOperationTypes.S, this);
+    }
+
+    t() {
+        Qubit._core.requestOperation(QuantumOperationTypes.T, this);
+    }
+
     h() {
         Qubit._core.requestOperation(QuantumOperationTypes.H, this);
     }

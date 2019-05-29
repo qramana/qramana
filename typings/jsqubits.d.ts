@@ -9,6 +9,8 @@ declare namespace jsqubits {
       Y(targetBits: number): QState;
       Z(targetBits: number): QState;
       r(targetBits: number, angle: number): QState;
+      s(targetBits: number): QState;
+      t(targetBits: number): QState;
       hadamard(targetBits: number): QState;
       cnot(controlBits: number, targetBits: number): QState;
       rotateX(targetBits: number, angle: number): QState;

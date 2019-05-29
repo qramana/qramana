@@ -6,6 +6,8 @@ export enum QuantumOperationTypes {
     Y,
     Z,
     R,
+    S,
+    T,
     H,
     CNOT,
     ROTATEX,

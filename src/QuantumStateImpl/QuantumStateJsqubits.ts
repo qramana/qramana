@@ -36,6 +36,14 @@ export class QuantumStateJsqubits extends QuantumState {
         this._qstate = this._qstate.r(bitId, angle);
     }
 
+    s(bitId: number) {
+        this._qstate = this._qstate.s(bitId);
+    }
+
+    t(bitId: number) {
+        this._qstate = this._qstate.t(bitId);
+    }
+
     h(bitId: number) {
         this._qstate = this._qstate.hadamard(bitId);
     }

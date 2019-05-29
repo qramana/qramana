@@ -33,8 +33,8 @@ export abstract class QuantumState {
     abstract y(bitId: number): void;
     abstract z(bitId: number): void;
     abstract h(bitId: number): void;
-    // abstract s(bitId: number): void;
-    // abstract t(bitId: number): void;
+    abstract s(bitId: number): void;
+    abstract t(bitId: number): void;
 
     /**
      * @param bitId 操作の対象となる量子ビットの識別ID
