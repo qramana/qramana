@@ -5,11 +5,12 @@
     "declaration": false,
     "noImplicitAny": true,
     "module": "commonjs",
-    "outDir": "./build"
+    "outDir": "."
   },
   "files": [
     "../node_modules/@types/jest/index.d.ts",
     "../lib/index.d.ts",
-    "src/spec.ts"
+    "./helpers/mock.ts",
+    "./src/QubitSpec.ts"
   ]
 }
