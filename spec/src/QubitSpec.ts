@@ -19,7 +19,7 @@ describe("test Qubit", () => {
         done();
     });
 
-    it("x", (done: any) => {
+    it("x:apply_0/1_state", (done: any) => {
         const qubit = new q.Qubit({ value: "|0>" });
         qubit.x();
         expect(qubit.toString()).toBe("|1>");
@@ -28,7 +28,7 @@ describe("test Qubit", () => {
         done();
     });
 
-    it("x_in_minus_ket", (done: any) => {
+    it("x:apply_minus_state", (done: any) => {
         const qubit = new q.Qubit({ value: "|0>" });
         qubit.x();
         qubit.h();
@@ -38,7 +38,7 @@ describe("test Qubit", () => {
         done();
     });
 
-    it("y", (done: any) => {
+    it("y:apply_0_state", (done: any) => {
         const qubit = new q.Qubit({ value: "|0>" });
         qubit.y();
         expect(qubit.toString()).toBe("(i)|1>");
@@ -47,7 +47,7 @@ describe("test Qubit", () => {
         done();
     });
 
-    it("y_with_1_state", (done: any) => {
+    it("y:apply_1_state", (done: any) => {
         const qubit = new q.Qubit({ value: "|0>" });
         qubit.x();
         expect(qubit.toString()).toBe("|1>");
