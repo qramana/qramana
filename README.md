@@ -16,9 +16,15 @@ jsqubits.d.tsを `git clone` し、ビルドした後、 `npm link` を実行し
 
 ```
 git clone git@github.com:m-qgame/pramana-prototype.git
-npm link jsqubits.d.ts
 npm install
 npm run build
+```
+
+## テスト方法
+ビルド方法のnpm installまで完了している必要がある。
+
+```
+npm run test
 ```
 
 ## 支援
