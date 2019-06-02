@@ -7,7 +7,7 @@
     "build": "tsc -p ./",
     "build:example": "tsc -p ./example",
     "copy": "cp-cli ./node_modules/jsqubits.d.ts/jsqubits.d.ts ./typings/jsqubits.d.ts",
-    "test": "npm run build && npm run test:build && npm run test:jest",
+    "test": "npm run build && npm run test:build && npm run test:jest && npm run lint",
     "test:build": "tsc -p ./spec",
     "test:jest": "jest",
     "lint": "npm run lint:src && npm run lint:spec",
