@@ -17,7 +17,7 @@ describe("test Qubit", () => {
         const qubit = new q.Qubit({ value: "|0>" });
         expect(qubit.toString()).toBe("|0>");
         done();
-    })
+    });
 
     it("x", (done: any) => {
         const qubit = new q.Qubit({ value: "|0>" });
@@ -26,9 +26,9 @@ describe("test Qubit", () => {
         qubit.x();
         expect(qubit.toString()).toBe("|0>");
         done();
-    })
+    });
 
-    it("x_h",(done: any) => {
+    it("x_h", (done: any) => {
         const qubit = new q.Qubit({ value: "|0>" });
         qubit.x();
         qubit.h();
@@ -36,5 +36,5 @@ describe("test Qubit", () => {
         qubit.x();
         expect(qubit.toString()).toBe("(-0.7071)|0> + (0.7071)|1>"); // X|-> = -|->
         done();
-    })
+    });
 });

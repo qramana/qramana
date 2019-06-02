@@ -69,6 +69,8 @@ export class Core {
             case QuantumOperationTypes.X:
             case QuantumOperationTypes.Y:
             case QuantumOperationTypes.Z:
+            case QuantumOperationTypes.S:
+            case QuantumOperationTypes.T:
             case QuantumOperationTypes.H:
                 const mapElement = qubitMapElements[0]; // 単一量子ビットなので常にlength = 1
                 this._requestOperationSingleQubit(quantumOperationType, mapElement);
@@ -81,6 +83,28 @@ export class Core {
                     this._mergeQubitMapElement(controlQubitMapElement, targetQubitMapElement);
                 }
                 targetQubitMapElement.quantumState.cnot(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
+                break;
+            default:
+                // no match operation
+        }
+    }
+
+    requestRotateOperation(quantumOperationType: QuantumOperationTypes, angle: number, qubit: Qubit) {
+        // 回転角を引数として必要とする操作は引数が異なるので分ける
+        // メモ：上手いことrequestOperationと引数が異なっても扱えないか……
+        const mapElement = this._lookupQubitQuantumStateMapElementFromQubit(qubit);
+        switch (quantumOperationType) {
+            case QuantumOperationTypes.R:
+                mapElement.quantumState.r(mapElement.bitId, angle);
+                break;
+            case QuantumOperationTypes.ROTATEX:
+                mapElement.quantumState.rx(mapElement.bitId, angle);
+                break;
+            case QuantumOperationTypes.ROTATEY:
+                mapElement.quantumState.ry(mapElement.bitId, angle);
+                break;
+            case QuantumOperationTypes.ROTATEX:
+                mapElement.quantumState.rz(mapElement.bitId, angle);
                 break;
             default:
                 // no match operation
@@ -113,6 +137,12 @@ export class Core {
                 break;
             case QuantumOperationTypes.Z:
                 mapElement.quantumState.z(mapElement.bitId);
+                break;
+            case QuantumOperationTypes.S:
+                mapElement.quantumState.s(mapElement.bitId);
+                break;
+            case QuantumOperationTypes.T:
+                mapElement.quantumState.t(mapElement.bitId);
                 break;
             case QuantumOperationTypes.H:
                 mapElement.quantumState.h(mapElement.bitId);

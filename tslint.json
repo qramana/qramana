@@ -26,6 +26,7 @@
         "singleline": "never"
       }],
       "no-shadowed-variable": false,
-      "curly": false
+      "curly": false,
+      "max-classes-per-file": true
     }
 }
