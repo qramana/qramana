@@ -28,7 +28,7 @@ describe("test Qubit", () => {
         qubit = new q.Qubit({ value: "|0>" });
         qubit.x();
         qubit.h();
-        expect(qubit.toString()).toBe("(0.7071)|0> + (-0.7071)|1>"); // |+>
+        expect(qubit.toString()).toBe("(0.7071)|0> + (-0.7071)|1>"); // |->
         done();
     })
 });
