@@ -64,6 +64,10 @@ export class Qubit {
 
     }
 
+    controlledZ(controlQubit: Qubit) {
+        Qubit._core.requestOperation(QuantumOperationTypes.CONTROLLED_Z, controlQubit, this);
+    }
+
     rotateX(angle: number) {
         Qubit._core.requestRotateOperation(QuantumOperationTypes.ROTATEX, angle, this);
     }
@@ -75,7 +79,7 @@ export class Qubit {
     rotateZ(angle: number) {
         Qubit._core.requestRotateOperation(QuantumOperationTypes.ROTATEZ, angle, this);
     }
-
+   
     /**
      * 量子ビットをZ基底で測定する
      * 返り値には0または1状態の測定結果が入る

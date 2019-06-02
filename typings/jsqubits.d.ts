@@ -19,6 +19,7 @@ declare namespace jsqubits {
       t(targetBits: SingleQubitOperatorTargetQubits): QState;
       T(targetBits: SingleQubitOperatorTargetQubits): QState;
       cnot(controlBits: number, targetBits: number): QState;
+      controlledZ(controlBits: number, targetBits: number): QState;
       rotateX(targetBits: SingleQubitOperatorTargetQubits, angle: number): QState;
       rotateY(targetBits: SingleQubitOperatorTargetQubits, angle: number): QState;
       rotateZ(targetBits: SingleQubitOperatorTargetQubits, angle: number): QState;

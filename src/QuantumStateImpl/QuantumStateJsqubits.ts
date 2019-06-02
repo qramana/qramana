@@ -52,6 +52,10 @@ export class QuantumStateJsqubits extends QuantumState {
         this._qstate = this._qstate.cnot(controllBitId, targetBitId);
     }
 
+    controlledZ(controllBitId: number, targetBitId: number) {
+        this._qstate = this._qstate.controlledZ(controllBitId, targetBitId);
+    }
+
     rx(bitId: number, angle: number) {
         this._qstate = this._qstate.rotateX(bitId, angle);
     }

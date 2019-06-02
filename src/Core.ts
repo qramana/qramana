@@ -84,6 +84,14 @@ export class Core {
                 }
                 targetQubitMapElement.quantumState.cnot(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
                 break;
+            case QuantumOperationTypes.CONTROLLED_Z:
+                const _controlQubitMapElement = qubitMapElements[0];
+                const _targetQubitMapElement = qubitMapElements[1];
+                // ControlledZ対象量子ビットが合成系ではない場合、先にマージして合成系のQuantumState化する
+                if (_controlQubitMapElement.quantumState !== targetQubitMapElement.quantumState) {
+                    this._mergeQubitMapElement(_controlQubitMapElement, _targetQubitMapElement);
+                }
+
             default:
                 // no match operation
         }
