@@ -8,9 +8,11 @@ describe("test Qubit", () => {
         q.Qubit._core = core;
     });
 
-    it("initialize", (done: any) => {
-        const qubit = new q.Qubit({ value: "|0>" });
-        done();
+    describe("new", () => {
+        it("will finish without throwing Error", (done: any) => {
+            const qubit = new q.Qubit({ value: "|0>" });
+            done();
+        });
     });
 
     describe("#toString", () => {
