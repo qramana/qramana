@@ -33,16 +33,17 @@ export abstract class QuantumState {
     abstract y(bitId: number): void;
     abstract z(bitId: number): void;
     abstract h(bitId: number): void;
-    // abstract s(bitId: number): void;
-    // abstract t(bitId: number): void;
+    abstract s(bitId: number): void;
+    abstract t(bitId: number): void;
 
     /**
      * @param bitId 操作の対象となる量子ビットの識別ID
      * @param angle 回転角。radianで与えられ、0 <= angle < 2*Math.PIの範囲を期待する
      */
-    // abstract rx(bitId: number, angle: number): void;
-    // abstract ry(bitId: number, angle: number): void;
-    // abstract rz(bitId: number, angle: number): void;
+    abstract r(bitId: number, angle: number): void;
+    abstract rx(bitId: number, angle: number): void;
+    abstract ry(bitId: number, angle: number): void;
+    abstract rz(bitId: number, angle: number): void;
 
     abstract cnot(controllBitId: number, targetBitId: number): void;
     // abstract ccnot(firtstControllBitId: number, secondControllBitId: number, targetBitId: number): void;

@@ -32,12 +32,36 @@ export class QuantumStateJsqubits extends QuantumState {
         this._qstate = this._qstate.Z(bitId);
     }
 
+    r(bitId: number, angle: number) {
+        this._qstate = this._qstate.r(bitId, angle);
+    }
+
+    s(bitId: number) {
+        this._qstate = this._qstate.s(bitId);
+    }
+
+    t(bitId: number) {
+        this._qstate = this._qstate.t(bitId);
+    }
+
     h(bitId: number) {
         this._qstate = this._qstate.hadamard(bitId);
     }
 
     cnot(controllBitId: number, targetBitId: number) {
         this._qstate = this._qstate.cnot(controllBitId, targetBitId);
+    }
+
+    rx(bitId: number, angle: number) {
+        this._qstate = this._qstate.rotateX(bitId, angle);
+    }
+
+    ry(bitId: number, angle: number) {
+        this._qstate = this._qstate.rotateY(bitId, angle);
+    }
+
+    rz(bitId: number, angle: number) {
+        this._qstate = this._qstate.rotateZ(bitId, angle);
     }
 
     measure(bitId: number): MeasurementResult {
