@@ -86,7 +86,7 @@ export class Qubit {
 
     /**
      * 量子ビットのダンプを返す
-     * 文字列の形式はQuantumStateの実装によって不定であり、 ライブラリユーザは形式に依存するべきではない
+     * 文字列の形式はQuantumStateの実装によって不定であり、 ライブラリユーザはこのメソッドが返す書式に依存するべきではない
      */
     toString(): string {
         return Qubit._core.toStringQubit(this);
