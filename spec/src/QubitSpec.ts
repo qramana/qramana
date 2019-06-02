@@ -18,4 +18,13 @@ describe("test Qubit", () => {
         expect(qubit.toString()).toBe("|0>");
         done();
     })
-  });
+
+    it("x", (done: any) => {
+        const qubit = new q.Qubit({ value: "|0>" });
+        qubit.x();
+        expect(qubit.toString()).toBe("|1>");
+        qubit.x();
+        expect(qubit.toString()).toBe("|0>");
+        done();
+    })
+});
