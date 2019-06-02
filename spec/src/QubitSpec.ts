@@ -17,5 +17,5 @@ describe("test Qubit", () => {
         const qubit = new q.Qubit({ value: "|0>" });
         expect(qubit.toString()).toBe("|0>");
         done();
-    })
+    });
   });
