@@ -8,17 +8,22 @@ describe("test Qubit", () => {
         q.Qubit._core = core;
     });
 
-    it("initialize", (done: any) => {
-        const qubit = new q.Qubit({ value: "|0>" });
-        done();
+    describe("new", () => {
+        it("will finish without throwing Error", (done: any) => {
+            const qubit = new q.Qubit({ value: "|0>" });
+            done();
+        });
     });
 
-    it("toString", (done: any) => {
-        const qubit = new q.Qubit({ value: "|0>" });
-        expect(qubit.toString()).toBe("|0>");
-        done();
+    describe("#toString", () => {
+        it("will be ket-format string", (done: any) => {
+            const qubit = new q.Qubit({ value: "|0>" });
+            expect(qubit.toString()).toBe("|0>");
+            done();
+        });
     });
 
+<<<<<<< HEAD
     it("x:apply_0/1_state", (done: any) => {
         const qubit = new q.Qubit({ value: "|0>" });
         qubit.x();
@@ -36,6 +41,22 @@ describe("test Qubit", () => {
         qubit.x();
         expect(qubit.toString()).toBe("(-0.7071)|0> + (0.7071)|1>"); // X|-> = -|->
         done();
+=======
+    describe("#x", () => {
+        it("applies X operator to 0-ket", (done: any) => {
+            const qubit = new q.Qubit({ value: "|0>" });
+            qubit.x();
+            expect(qubit.toString()).toBe("|1>");
+            done();
+        });
+
+        it("applies X operator to 1-ket", (done: any) => {
+            const qubit = new q.Qubit({ value: "|1>" });
+            qubit.x();
+            expect(qubit.toString()).toBe("|0>");
+            done();
+        });
+>>>>>>> master
     });
 
     it("y:apply_0_state", (done: any) => {
