@@ -20,7 +20,7 @@ describe("test Qubit", () => {
     })
 
     it("x", (done: any) => {
-        let qubit = new q.Qubit({ value: "|0>" });
+        const qubit = new q.Qubit({ value: "|0>" });
         qubit.x();
         expect(qubit.toString()).toBe("|1>");
         qubit.x();
