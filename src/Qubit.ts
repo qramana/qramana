@@ -64,6 +64,10 @@ export class Qubit {
 
     }
 
+    controlledZ(controlQubit: Qubit) {
+        Qubit._core.requestOperation(QuantumOperationTypes.CONTROLLED_Z, controlQubit, this);
+    }
+
     rotateX(angle: number) {
         Qubit._core.requestRotateOperation(QuantumOperationTypes.ROTATEX, angle, this);
     }

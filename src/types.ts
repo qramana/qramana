@@ -10,6 +10,7 @@ export enum QuantumOperationTypes {
     T,
     H,
     CNOT,
+    CONTROLLED_Z,
     ROTATEX,
     ROTATEY,
     ROTATEZ

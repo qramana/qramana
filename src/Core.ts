@@ -76,14 +76,14 @@ export class Core {
                 this._requestOperationSingleQubit(quantumOperationType, mapElement);
                 break;
             case QuantumOperationTypes.CNOT:
+            case QuantumOperationTypes.CONTROLLED_Z:
                 const controlQubitMapElement = qubitMapElements[0];
                 const targetQubitMapElement = qubitMapElements[1];
-                // CNOT対象量子ビットが合成系ではない場合、先にマージして合成系のQuantumState化する
+                // Controlled系操作の対象量子ビットが合成系ではない場合、先にマージして合成系のQuantumState化する
                 if (controlQubitMapElement.quantumState !== targetQubitMapElement.quantumState) {
                     this._mergeQubitMapElement(controlQubitMapElement, targetQubitMapElement);
                 }
-                targetQubitMapElement.quantumState.cnot(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
-                break;
+                this._requestControlledOperationQubit(quantumOperationType, controlQubitMapElement, targetQubitMapElement);
             default:
                 // no match operation
         }
@@ -146,6 +146,26 @@ export class Core {
                 break;
             case QuantumOperationTypes.H:
                 mapElement.quantumState.h(mapElement.bitId);
+                break;
+            default:
+                // no match operation
+        }
+    }
+
+    /**
+     * Controlled系のための複数量子ビット操作
+     */
+    _requestControlledOperationQubit(
+        quantumOperationType: QuantumOperationTypes,
+        controlQubitMapElement: QubitQuantumStateMapElement,
+        targetQubitMapElement: QubitQuantumStateMapElement
+    ) {
+        switch (quantumOperationType) {
+            case QuantumOperationTypes.CNOT:
+                targetQubitMapElement.quantumState.cnot(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
+                break;
+            case QuantumOperationTypes.CONTROLLED_Z:
+                targetQubitMapElement.quantumState.controlledZ(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
                 break;
             default:
                 // no match operation
