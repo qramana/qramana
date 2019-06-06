@@ -2,7 +2,7 @@ import * as q from "../../lib/index";
 
 describe("test QuantumStateJsQubits", () => {
     it("new", (done: any) => {
-        let state = new q.QuantumStateJsqubits("|0>");
+        const state = new q.QuantumStateJsqubits("|0>");
         expect(state).not.toBeUndefined();
         done();
     });
