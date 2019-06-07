@@ -38,4 +38,20 @@ describe("test Qubit", () => {
             done();
         });
     });
+
+    describe("#y", () => {
+        it("applies Y operator to 0-ket", (done: any) => {
+            const qubit = new q.Qubit({ value: "|0>" });
+            qubit.y();
+            expect(qubit.toString()).toBe("(i)|1>");
+            done();
+        });
+
+        it("applies Y operator to 1-ket", (done: any) => {
+            const qubit = new q.Qubit({ value: "|1>" });
+            qubit.y();
+            expect(qubit.toString()).toBe("(-i)|0>");
+            done();
+        });
+    });
 });
