@@ -69,4 +69,19 @@ describe("test Qubit", () => {
             done();
         });
     });
+
+    describe("#hadamard", () => {
+        it("applies hadamard operator to 0-ket", (done: any) => {
+            const qubit = new q.Qubit({ value: "|0>" });
+            qubit.h();
+            expect(qubit.toString()).toBe("(0.7071)|0> + (0.7071)|1>");
+            done();
+        });
+        it("applies hadamard operator to 1-ket", (done: any) => {
+            const qubit = new q.Qubit({ value: "|1>" });
+            qubit.h();
+            expect(qubit.toString()).toBe("(0.7071)|0> + (-0.7071)|1>");
+            done();
+        });
+    });
 });
