@@ -70,7 +70,7 @@ describe("test Qubit", () => {
         });
     });
 
-    describe("#hadamard", () => {
+    describe("#h", () => {
         it("applies hadamard operator to 0-ket", (done: any) => {
             const qubit = new q.Qubit({ value: "|0>" });
             qubit.h();
@@ -81,6 +81,21 @@ describe("test Qubit", () => {
             const qubit = new q.Qubit({ value: "|1>" });
             qubit.h();
             expect(qubit.toString()).toBe("(0.7071)|0> + (-0.7071)|1>");
+            done();
+        });
+    });
+
+    describe("#s", () => {
+        it("applies phase shift operator to 0-ket", (done: any) => {
+            const qubit = new q.Qubit({ value: "|0>" });
+            qubit.s();
+            expect(qubit.toString()).toBe("|0>");
+            done();
+        });
+        it("applies phase shift operator to 1-ket", (done: any) => {
+            const qubit = new q.Qubit({ value: "|1>" });
+            qubit.s();
+            expect(qubit.toString()).toBe("(i)|1>");
             done();
         });
     });
