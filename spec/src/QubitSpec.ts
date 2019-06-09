@@ -54,4 +54,19 @@ describe("test Qubit", () => {
             done();
         });
     });
+
+    describe("#z", () => {
+        it("applies Z operator to 0-ket", (done: any) => {
+            const qubit = new q.Qubit({ value: "|0>" });
+            qubit.z();
+            expect(qubit.toString()).toBe("|0>");
+            done();
+        });
+        it("applies Z operator to 1-ket", (done: any) => {
+            const qubit = new q.Qubit({ value: "|1>" });
+            qubit.z();
+            expect(qubit.toString()).toBe("(-1)|1>");
+            done();
+        });
+    });
 });
