@@ -23,80 +23,112 @@ describe("test Qubit", () => {
         });
     });
 
-    describe("#x", () => {
-        it("applies X operator to 0-ket", (done: any) => {
-            const qubit = new q.Qubit({ value: "|0>" });
-            qubit.x();
-            expect(qubit.toString()).toBe("|1>");
-            done();
+    describe("Pauli Operators", () => {
+        describe("#x", () => {
+            it("applies X operator to 0-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|0>" });
+                qubit.x();
+                expect(qubit.toString()).toBe("|1>");
+                done();
+            });
+
+            it("applies X operator to 1-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|1>" });
+                qubit.x();
+                expect(qubit.toString()).toBe("|0>");
+                done();
+            });
         });
 
-        it("applies X operator to 1-ket", (done: any) => {
-            const qubit = new q.Qubit({ value: "|1>" });
-            qubit.x();
-            expect(qubit.toString()).toBe("|0>");
-            done();
+        describe("#y", () => {
+            it("applies Y operator to 0-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|0>" });
+                qubit.y();
+                expect(qubit.toString()).toBe("(i)|1>");
+                done();
+            });
+
+            it("applies Y operator to 1-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|1>" });
+                qubit.y();
+                expect(qubit.toString()).toBe("(-i)|0>");
+                done();
+            });
+        });
+
+        describe("#z", () => {
+            it("applies Z operator to 0-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|0>" });
+                qubit.z();
+                expect(qubit.toString()).toBe("|0>");
+                done();
+            });
+            it("applies Z operator to 1-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|1>" });
+                qubit.z();
+                expect(qubit.toString()).toBe("(-1)|1>");
+                done();
+            });
+        });
+
+        describe("#h", () => {
+            it("applies hadamard operator to 0-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|0>" });
+                qubit.h();
+                expect(qubit.toString()).toBe("(0.7071)|0> + (0.7071)|1>");
+                done();
+            });
+            it("applies hadamard operator to 1-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|1>" });
+                qubit.h();
+                expect(qubit.toString()).toBe("(0.7071)|0> + (-0.7071)|1>");
+                done();
+            });
         });
     });
 
-    describe("#y", () => {
-        it("applies Y operator to 0-ket", (done: any) => {
-            const qubit = new q.Qubit({ value: "|0>" });
-            qubit.y();
-            expect(qubit.toString()).toBe("(i)|1>");
-            done();
+    describe("Phase shift Operators", () => {
+        describe("#r", () => {
+            it("applies phase shift operator to 0-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|0>" });
+                qubit.r(Math.PI / 3);
+                expect(qubit.toString()).toBe("|0>");
+                done();
+            });
+            it("applies phase shift operator to 1-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|1>" });
+                qubit.r(Math.PI / 3);
+                expect(qubit.toString()).toBe("(0.5+0.866i)|1>");
+                done();
+            });
         });
-
-        it("applies Y operator to 1-ket", (done: any) => {
-            const qubit = new q.Qubit({ value: "|1>" });
-            qubit.y();
-            expect(qubit.toString()).toBe("(-i)|0>");
-            done();
+        describe("#t", () => {
+            it("applies phase shift pi/4 (as t) operator to 0-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|0>" });
+                qubit.t();
+                expect(qubit.toString()).toBe("|0>");
+                done();
+            });
+            it("applies phase shift pi/4 (as t) operator to 1-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|1>" });
+                qubit.t();
+                expect(qubit.toString()).toBe("(0.7071+0.7071i)|1>");
+                done();
+            });
         });
-    });
-
-    describe("#z", () => {
-        it("applies Z operator to 0-ket", (done: any) => {
-            const qubit = new q.Qubit({ value: "|0>" });
-            qubit.z();
-            expect(qubit.toString()).toBe("|0>");
-            done();
-        });
-        it("applies Z operator to 1-ket", (done: any) => {
-            const qubit = new q.Qubit({ value: "|1>" });
-            qubit.z();
-            expect(qubit.toString()).toBe("(-1)|1>");
-            done();
-        });
-    });
-
-    describe("#h", () => {
-        it("applies hadamard operator to 0-ket", (done: any) => {
-            const qubit = new q.Qubit({ value: "|0>" });
-            qubit.h();
-            expect(qubit.toString()).toBe("(0.7071)|0> + (0.7071)|1>");
-            done();
-        });
-        it("applies hadamard operator to 1-ket", (done: any) => {
-            const qubit = new q.Qubit({ value: "|1>" });
-            qubit.h();
-            expect(qubit.toString()).toBe("(0.7071)|0> + (-0.7071)|1>");
-            done();
-        });
-    });
-
-    describe("#s", () => {
-        it("applies phase shift operator to 0-ket", (done: any) => {
-            const qubit = new q.Qubit({ value: "|0>" });
-            qubit.s();
-            expect(qubit.toString()).toBe("|0>");
-            done();
-        });
-        it("applies phase shift operator to 1-ket", (done: any) => {
-            const qubit = new q.Qubit({ value: "|1>" });
-            qubit.s();
-            expect(qubit.toString()).toBe("(i)|1>");
-            done();
+        describe("#s", () => {
+            it("applies phase shift pi/2 (as s) operator to 0-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|0>" });
+                qubit.s();
+                expect(qubit.toString()).toBe("|0>");
+                done();
+            });
+            it("applies phase shift pi/2 (as s) operator to 1-ket", (done: any) => {
+                const qubit = new q.Qubit({ value: "|1>" });
+                qubit.s();
+                expect(qubit.toString()).toBe("(i)|1>");
+                done();
+            });
         });
     });
 });
