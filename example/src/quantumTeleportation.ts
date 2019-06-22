@@ -21,5 +21,3 @@ if (result2 === 0) q3.x();
 
 console.log("result", JSON.stringify(q3.toString()));
 console.log("measure", q3.measure());
-
-var hoge = new Set();
