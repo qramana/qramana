@@ -59,9 +59,18 @@ export class Qubit {
      *
      * @param controlQubit 制御量子ビット
      */
-    cnot(controlQubit: Qubit) {
-        Qubit._core.requestOperation(QuantumOperationTypes.CNOT, controlQubit, this);
 
+    // Comment(imatsuzaki) Because cnot and controlledX are equal, we use controlledX.
+    cnot(controlQubit: Qubit) {
+        Qubit._core.requestOperation(QuantumOperationTypes.CONTROLLED_X, controlQubit, this);
+    }
+
+    controlledX(controlQubit: Qubit) {
+        Qubit._core.requestOperation(QuantumOperationTypes.CONTROLLED_X, controlQubit, this);
+    }
+
+    controlledY(controlQubit: Qubit) {
+        Qubit._core.requestOperation(QuantumOperationTypes.CONTROLLED_Y, controlQubit, this);
     }
 
     controlledZ(controlQubit: Qubit) {

@@ -46,6 +46,8 @@ export abstract class QuantumState {
     abstract rz(bitId: number, angle: number): void;
 
     abstract cnot(controllBitId: number, targetBitId: number): void;
+    abstract controlledX(controllBitId: number, targetBitId: number): void;
+    abstract controlledY(controllBitId: number, targetBitId: number): void;
     abstract controlledZ(controllBitId: number, targetBitId: number): void;
     // abstract ccnot(firtstControllBitId: number, secondControllBitId: number, targetBitId: number): void;
     abstract measure(bitId: number): MeasurementResult;
