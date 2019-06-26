@@ -75,7 +75,8 @@ export class Core {
                 const mapElement = qubitMapElements[0]; // 単一量子ビットなので常にlength = 1
                 this._requestOperationSingleQubit(quantumOperationType, mapElement);
                 break;
-            case QuantumOperationTypes.CNOT:
+            case QuantumOperationTypes.CONTROLLED_X:
+            case QuantumOperationTypes.CONTROLLED_Y:
             case QuantumOperationTypes.CONTROLLED_Z:
                 const controlQubitMapElement = qubitMapElements[0];
                 const targetQubitMapElement = qubitMapElements[1];
@@ -161,8 +162,17 @@ export class Core {
         targetQubitMapElement: QubitQuantumStateMapElement
     ) {
         switch (quantumOperationType) {
-            case QuantumOperationTypes.CNOT:
-                targetQubitMapElement.quantumState.cnot(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
+            case QuantumOperationTypes.CONTROLLED_X:
+                targetQubitMapElement.quantumState.controlledX(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
+                break;
+            case QuantumOperationTypes.CONTROLLED_Y:
+                targetQubitMapElement.quantumState.controlledY(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
+                break;
+            case QuantumOperationTypes.CONTROLLED_X:
+                targetQubitMapElement.quantumState.controlledX(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
+                break;
+            case QuantumOperationTypes.CONTROLLED_Y:
+                targetQubitMapElement.quantumState.controlledY(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
                 break;
             case QuantumOperationTypes.CONTROLLED_Z:
                 targetQubitMapElement.quantumState.controlledZ(controlQubitMapElement.bitId, targetQubitMapElement.bitId);

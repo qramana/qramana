@@ -49,7 +49,15 @@ export class QuantumStateJsqubits extends QuantumState {
     }
 
     cnot(controllBitId: number, targetBitId: number) {
-        this._qstate = this._qstate.cnot(controllBitId, targetBitId);
+        this._qstate = this._qstate.controlledX(controllBitId, targetBitId);
+    }
+
+    controlledX(controllBitId: number, targetBitId: number) {
+        this._qstate = this._qstate.controlledX(controllBitId, targetBitId);
+    }
+
+    controlledY(controllBitId: number, targetBitId: number) {
+        this._qstate = this._qstate.controlledY(controllBitId, targetBitId);
     }
 
     controlledZ(controllBitId: number, targetBitId: number) {
