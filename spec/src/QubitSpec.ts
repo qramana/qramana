@@ -134,7 +134,7 @@ describe("test Qubit", () => {
 
     describe("Controlled operators", () => {
         describe("#cnot", () => {
-            it("applies cnot operator to 00-ket", (done: any) => {
+            it("applied cnot operator to 00-ket", (done: any) => {
                 const controlQubit = new q.Qubit({ value: "|0>" });
                 const targetQubit = new q.Qubit({ value: "|0>"});
                 targetQubit.cnot(controlQubit);
@@ -164,6 +164,108 @@ describe("test Qubit", () => {
                 targetQubit.cnot(controlQubit);
                 expect(controlQubit.toString()).toBe("|10>");
                 expect(targetQubit.toString()).toBe("|10>");
+                done();
+            });
+        });
+        describe("#controlledX which is equivallent to cnot", () => {
+            it("applied cnot operator to 00-ket", (done: any) => {
+                const controlQubit = new q.Qubit({ value: "|0>" });
+                const targetQubit = new q.Qubit({ value: "|0>" });
+                targetQubit.controlledX(controlQubit);
+                expect(controlQubit.toString()).toBe("|00>");
+                expect(targetQubit.toString()).toBe("|00>");
+                done();
+            });
+            it("applied cnot operator to 01-ket", (done: any) => {
+                const controlQubit = new q.Qubit({ value: "|0>" });
+                const targetQubit = new q.Qubit({ value: "|1>" });
+                targetQubit.controlledX(controlQubit);
+                expect(controlQubit.toString()).toBe("|01>");
+                expect(targetQubit.toString()).toBe("|01>");
+                done();
+            });
+            it("applied cnot operator to 10-ket", (done: any) => {
+                const controlQubit = new q.Qubit({ value: "|1>" });
+                const targetQubit = new q.Qubit({ value: "|0>" });
+                targetQubit.controlledX(controlQubit);
+                expect(controlQubit.toString()).toBe("|11>");
+                expect(targetQubit.toString()).toBe("|11>");
+                done();
+            });
+            it("applied cnot operator to 11-ket", (done: any) => {
+                const controlQubit = new q.Qubit({ value: "|1>" });
+                const targetQubit = new q.Qubit({ value: "|1>" });
+                targetQubit.controlledX(controlQubit);
+                expect(controlQubit.toString()).toBe("|10>");
+                expect(targetQubit.toString()).toBe("|10>");
+                done();
+            });
+        });
+        describe("#controlledY", () => {
+            it("applied cnot operator to 00-ket", (done: any) => {
+                const controlQubit = new q.Qubit({ value: "|0>" });
+                const targetQubit = new q.Qubit({ value: "|0>" });
+                targetQubit.controlledY(controlQubit);
+                expect(controlQubit.toString()).toBe("|00>");
+                expect(targetQubit.toString()).toBe("|00>");
+                done();
+            });
+            it("applied cnot operator to 01-ket", (done: any) => {
+                const controlQubit = new q.Qubit({ value: "|0>" });
+                const targetQubit = new q.Qubit({ value: "|1>" });
+                targetQubit.controlledY(controlQubit);
+                expect(controlQubit.toString()).toBe("|01>");
+                expect(targetQubit.toString()).toBe("|01>");
+                done();
+            });
+            it("applied cnot operator to 10-ket", (done: any) => {
+                const controlQubit = new q.Qubit({ value: "|1>" });
+                const targetQubit = new q.Qubit({ value: "|0>" });
+                targetQubit.controlledY(controlQubit);
+                expect(controlQubit.toString()).toBe("(i)|11>");
+                expect(targetQubit.toString()).toBe("(i)|11>");
+                done();
+            });
+            it("applied cnot operator to 11-ket", (done: any) => {
+                const controlQubit = new q.Qubit({ value: "|1>" });
+                const targetQubit = new q.Qubit({ value: "|1>" });
+                targetQubit.controlledY(controlQubit);
+                expect(controlQubit.toString()).toBe("(-i)|10>");
+                expect(targetQubit.toString()).toBe("(-i)|10>");
+                done();
+            });
+        });
+        describe("#controlledZ", () => {
+            it("applied cnot operator to 00-ket", (done: any) => {
+                const controlQubit = new q.Qubit({ value: "|0>" });
+                const targetQubit = new q.Qubit({ value: "|0>" });
+                targetQubit.controlledZ(controlQubit);
+                expect(controlQubit.toString()).toBe("|00>");
+                expect(targetQubit.toString()).toBe("|00>");
+                done();
+            });
+            it("applied cnot operator to 01-ket", (done: any) => {
+                const controlQubit = new q.Qubit({ value: "|0>" });
+                const targetQubit = new q.Qubit({ value: "|1>" });
+                targetQubit.controlledZ(controlQubit);
+                expect(controlQubit.toString()).toBe("|01>");
+                expect(targetQubit.toString()).toBe("|01>");
+                done();
+            });
+            it("applied cnot operator to 10-ket", (done: any) => {
+                const controlQubit = new q.Qubit({ value: "|1>" });
+                const targetQubit = new q.Qubit({ value: "|0>" });
+                targetQubit.controlledZ(controlQubit);
+                expect(controlQubit.toString()).toBe("|10>");
+                expect(targetQubit.toString()).toBe("|10>");
+                done();
+            });
+            it("applied cnot operator to 11-ket", (done: any) => {
+                const controlQubit = new q.Qubit({ value: "|1>" });
+                const targetQubit = new q.Qubit({ value: "|1>" });
+                targetQubit.controlledZ(controlQubit);
+                expect(controlQubit.toString()).toBe("(-1)|11>");
+                expect(targetQubit.toString()).toBe("(-1)|11>");
                 done();
             });
         });
