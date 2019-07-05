@@ -1,8 +1,8 @@
 import * as p from "../../lib/index";
 
-const q1 = new p.Qubit({ value: "|0>" });
-const q2 = new p.Qubit({ value: "|0>" });
-const q3 = new p.Qubit({ value: "|1>" });
+const q1 = new p.Qubit({ value: 0 });
+const q2 = new p.Qubit({ value: 0 });
+const q3 = new p.Qubit({ value: 1 });
 
 // 量子テレポーテーション
 
