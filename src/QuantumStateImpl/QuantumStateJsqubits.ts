@@ -1,10 +1,10 @@
-import { QuantumState, MeasurementResult, QuantumStateParameter, QuantumStateGenerator } from "../QuantumState";
+import { QuantumState, MeasurementResult, QuantumStateInitializeType, QuantumStateGenerator } from "../QuantumState";
 import * as jsq from "jsqubits";
 
 /**
  * QuantumStateGeneratorのjsqubits実装
  */
-export const quantumStateJsQubitsGenerator: QuantumStateGenerator = function(param: QuantumStateParameter) {
+export const quantumStateJsQubitsGenerator: QuantumStateGenerator = function(param: QuantumStateInitializeType) {
     return new QuantumStateJsqubits(param);
 };
 
@@ -15,9 +15,42 @@ export class QuantumStateJsqubits extends QuantumState {
     // 抽象QuantumStateに無いメンバーは全てprivateで持つ
     private _qstate: jsq.jsqubits.QState;
 
-    constructor(param: QuantumStateParameter) {
+    constructor(param: QuantumStateInitializeType) {
         super(param);
-        this._qstate = jsq.jsqubits(param); // stringで生成しているけど変えたい
+        this._qstate = jsq.jsqubits("|0>");
+        if (typeof param === "number") {
+            switch (param) {
+                case 0:
+                    // do nothing
+                    break;
+                case 1:
+                    this._qstate = this._qstate.x(0);
+                    break;
+                default:
+                    // invalid state
+            }
+        } else {
+            switch (param) {
+                case "0":
+                case "|0>":
+                    // do nothing
+                    break;
+                case "1":
+                case "|1>":
+                    this._qstate = this._qstate.x(0);
+                    break;
+
+                case "+":
+                        this._qstate = this._qstate.hadamard(0);
+                        break;
+                case "-":
+                        this._qstate = this._qstate.x(0);
+                        this._qstate = this._qstate.hadamard(0);
+                        break;
+                default:
+                    // invalid state
+            }
+        }
     }
 
     x(bitId: number) {

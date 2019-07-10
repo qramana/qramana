@@ -1,5 +1,5 @@
-import { Core, QuantumState, QuantumStateJsqubits } from "../../lib/index";
-import { QuantumStateParameter } from "../../lib/QuantumState";
+import { Core, QuantumStateJsqubits } from "../../lib/index";
+import { QuantumStateInitializeType } from "../../lib/QuantumState";
 
 export class MockCore extends Core {
 
@@ -9,6 +9,6 @@ export class MockQuantumStateJsQubits extends QuantumStateJsqubits {
 
 }
 
-export function quantumStateJsQubitsGenerator(param: QuantumStateParameter) {
+export function quantumStateJsQubitsGenerator(param: QuantumStateInitializeType) {
     return new MockQuantumStateJsQubits(param);
 }

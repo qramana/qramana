@@ -9,13 +9,17 @@ export interface MeasurementResult {
 /**
  * QuantumStateの初期化パラメータ
  */
-export type QuantumStateParameter = string; // 将来的にはjsqubitsがサポートするnumberAmplitudeにも対応したいが、jsbuits.d.tsの対応が必要
+export type QuantumStateInitializeType =
+    QuantumStateInitializeTypeString | QuantumStateInitializeTypeNumber;
+
+export type QuantumStateInitializeTypeString = "0" | "1" | "+" | "-" | "|0>" | "|1>";
+export type QuantumStateInitializeTypeNumber = 0 | 1;
 
 /**
  * QuantumStateを生成する関数
  * QuantumStateを継承したクラスは、QuantumStateGeneratorwo継承した関数を提供する必要がある
  */
-export type QuantumStateGenerator = (param: QuantumStateParameter) => QuantumState;
+export type QuantumStateGenerator = (param: QuantumStateInitializeType) => QuantumState;
 
 /**
  * 量子ビットの状態ベクトルを表現する抽象クラス
@@ -24,7 +28,7 @@ export type QuantumStateGenerator = (param: QuantumStateParameter) => QuantumSta
  * ユーザは、QuantumStateを実装したクラスを用意するか、DefaultQuantumStateを利用する
  */
 export abstract class QuantumState {
-    constructor(param: QuantumStateParameter) { /** abstract */ }
+    constructor(param: QuantumStateInitializeType) { /** abstract */ }
 
     /**
      * @param bitId 操作の対象となる量子ビットの識別ID
