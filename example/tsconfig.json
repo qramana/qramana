@@ -9,6 +9,7 @@
   },
   "files": [
     "../typings/jsqubits.d.ts",
-    "./src/quantumTeleportation.ts"
+    "./src/quantumTeleportation.ts",
+    "./src/groverSearch.ts"
   ]
 }
