@@ -8,7 +8,6 @@
     "declaration": true
   },
   "files": [
-    "./typings/jsqubits.d.ts",
     "./src/index.ts"
   ]
 }

@@ -10,18 +10,12 @@ web開発向け量子計算フレームワーク「pramana」の試験実装で�
 
 ## ビルド方法
 
-本ライブラリは[jsqubits.d.ts](https://github.com/m-qgame/jsqubits.d.ts)に依存しています。
-jsqubits.d.tsを `git clone` し、ビルドした後、 `npm link` を実行してください。
-その後、jsqubits.d.tsディレクトリの階層で以下のコマンドを実行してください。
-
 ```
-git clone git@github.com:m-qgame/pramana-prototype.git
 npm install
 npm run build
 ```
 
 ## テスト方法
-ビルド方法のnpm installまで完了している必要がある。
 
 ```
 npm run test
