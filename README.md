@@ -1,31 +1,21 @@
-# pramana-prototype
+# qramana
 
-## これは
+ `qramana` is a TypeScript library for quantum calculation.
 
-web開発向け量子計算フレームワーク「pramana」の試験実装です。
-
-## 本ライブラリについて
-
-試験実装版です。公開に含まれるべきでないコメント・URLなどが含まれていないことを確認した後に公開版を作成してください。
-
-## ビルド方法
+## How to build
 
 ```
 npm install
 npm run build
 ```
 
-## テスト方法
+## Run test
 
 ```
 npm run test
 ```
 
-## 支援
-
-本リポジトリの開発は、以下の組織の支援を受けています。
-
-[2018年度未踏ターゲット事業（ゲート式量子コンピュータ部門）](https://www.ipa.go.jp/jinzai/target/2018/koubo2_index.html)
+## Acknowledgement
 
 This software is supported by IPA Mitou Target Project 2018 (Category: quantum logic gate).
 See the abstract [here](https://www.ipa.go.jp/jinzai/target/2018/koubo2_index.html) (written in Japanese).
