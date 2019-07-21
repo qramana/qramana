@@ -2,17 +2,33 @@
 
  `qramana` is a TypeScript library for quantum calculation.
 
-## How to build
+## Quick start
+
+### Install
+
+To install current release
+
+```bash
+npm install @qramana/qramana
+```
+
+### Try your first qubit.
+
+Write your first qubit definition to typescript code in `qubit.ts`,
+
+```ts
+import * as q from '@qramana/qramana';
+
+const qubit = new q.Qubit({value: "|0>"});
+console.log(qubit.toString());
+```
+
+and run it.
 
 ```
-npm install
-npm run build
-```
-
-## Run test
-
-```
-npm run test
+$ tsc qubit.ts
+$ node qubit.js
+|0>
 ```
 
 ## Acknowledgement
