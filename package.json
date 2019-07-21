@@ -24,6 +24,9 @@
     "tslint": "^5.4.3",
     "typescript": "^3.0.0"
   },
+  "files": [
+    "lib"
+  ],
   "dependencies": {
     "cp-cli": "^2.0.0",
     "jsqubits": "^1.1.0"
