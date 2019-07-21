@@ -9,7 +9,7 @@
 To install current release via npm.
 
 ```bash
-npm install @qramana/qramana
+$ npm install @qramana/qramana
 ```
 
 ### Try your first qubit
