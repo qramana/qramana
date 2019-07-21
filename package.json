@@ -16,7 +16,7 @@
   "keywords": [
     "quantum"
   ],
-  "author": "",
+  "author": "Qramana Team (https://github.com/qramana)",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^24.0.11",
