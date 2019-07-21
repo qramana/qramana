@@ -16,6 +16,14 @@
   "keywords": [
     "quantum"
   ],
+  "repository": {
+    "type": "git",
+    "url": "qramana/qramana.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "@qramana:registry": "https://registry.npmjs.org/"
+  },
   "author": "Qramana Team (https://github.com/qramana)",
   "license": "MIT",
   "devDependencies": {
