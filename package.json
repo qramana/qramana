@@ -1,5 +1,5 @@
 {
-  "name": "qramana",
+  "name": "@qramana/qramana",
   "version": "0.0.1",
   "description": "TypeScript library for quantum calculation",
   "main": "lib/index.js",
