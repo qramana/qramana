@@ -7,4 +7,4 @@ spec/build
 src/**/*.js
 spec/src/**/*.js
 spec/helpers/**/*.js
-examples/**/*.js
+example/**/*.js
