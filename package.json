@@ -1,12 +1,11 @@
 {
-  "name": "pramana-prototype",
+  "name": "qramana",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "TypeScript library for quantum calculation",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc -p ./",
     "build:example": "tsc -p ./example",
-    "copy": "cp-cli ./node_modules/jsqubits.d.ts/jsqubits.d.ts ./typings/jsqubits.d.ts",
     "test": "npm run build && npm run test:build && npm run test:jest && npm run lint",
     "test:build": "tsc -p ./spec",
     "test:jest": "jest",
@@ -14,9 +13,11 @@
     "lint:src": "tslint -c tslint.json src/*.ts src/**/*.ts --project ./tsconfig.json",
     "lint:spec": "tslint -c tslint.json spec/*.ts spec/**/*.ts --project ./spec/tsconfig.json"
   },
-  "keywords": [],
+  "keywords": [
+    "quantum"
+  ],
   "author": "",
-  "license": "",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^24.0.11",
     "@types/jsqubits": "1.1.0",
@@ -28,7 +29,6 @@
     "lib"
   ],
   "dependencies": {
-    "cp-cli": "^2.0.0",
-    "jsqubits": "^1.1.0"
+    "jsqubits": "^1.1.1"
   }
 }
