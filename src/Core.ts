@@ -1,6 +1,7 @@
 import { QuantumState, QuantumStateGenerator} from "@qramana/qramana-common-types";
 import { Qubit, QubitParameter } from "./Qubit";
 import { QuantumOperationTypes } from "./types";
+import * as methods from "./methods";
 
 /**
  * Coreの初期化パラメータ
@@ -65,6 +66,7 @@ export class Core {
         const qubitMapElements = qubits.map(qubit => this._lookupQubitQuantumStateMapElementFromQubit(qubit));
 
         // todo: 全ての量子操作に対してメソッドを個別に用意するのは冗長だが、switch文が伸びるのも読みづらいので、ある程度の粒度で分けたい
+        let targetQubitMapElement: QubitQuantumStateMapElement;
         switch (quantumOperationType) {
             case QuantumOperationTypes.X:
             case QuantumOperationTypes.Y:
@@ -79,12 +81,29 @@ export class Core {
             case QuantumOperationTypes.CONTROLLED_Y:
             case QuantumOperationTypes.CONTROLLED_Z:
                 const controlQubitMapElement = qubitMapElements[0];
-                const targetQubitMapElement = qubitMapElements[1];
+                targetQubitMapElement = qubitMapElements[1];
                 // Controlled系操作の対象量子ビットが合成系ではない場合、先にマージして合成系のQuantumState化する
                 if (controlQubitMapElement.quantumState !== targetQubitMapElement.quantumState) {
                     this._mergeQubitMapElement(controlQubitMapElement, targetQubitMapElement);
                 }
                 this._requestControlledOperationQubit(quantumOperationType, controlQubitMapElement, targetQubitMapElement);
+                break;
+            case QuantumOperationTypes.TOFFOLI:
+                const control0QubitMapElement = qubitMapElements[0];
+                const control1QubitMapElement = qubitMapElements[1];
+                targetQubitMapElement = qubitMapElements[2];
+                if (control0QubitMapElement.quantumState !== control1QubitMapElement.quantumState) {
+                    this._mergeQubitMapElement(control0QubitMapElement, control1QubitMapElement);
+                }
+                if (control0QubitMapElement.quantumState !== targetQubitMapElement.quantumState) {
+                    this._mergeQubitMapElement(control0QubitMapElement, targetQubitMapElement);
+                }
+                methods.toffoli(
+                    control0QubitMapElement.quantumState,
+                    control0QubitMapElement.bitId,
+                    control1QubitMapElement.bitId,
+                    targetQubitMapElement.bitId);
+                break;
             default:
                 // no match operation
         }

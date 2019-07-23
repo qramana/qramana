@@ -146,6 +146,10 @@ export class Qubit {
         Qubit._core.requestRotateOperation(QuantumOperationTypes.ROTATEZ, angle, this);
     }
 
+    toffoli(controlQubit0: Qubit, controlQubit1: Qubit) {
+        Qubit._core.requestOperation(QuantumOperationTypes.TOFFOLI, controlQubit0, controlQubit1, this);
+    }
+
     /**
      * 量子ビットをZ基底で測定する
      * 返り値には0または1状態の測定結果が入る

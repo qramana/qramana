@@ -14,5 +14,6 @@ export enum QuantumOperationTypes {
     CONTROLLED_Z,
     ROTATEX,
     ROTATEY,
-    ROTATEZ
+    ROTATEZ,
+    TOFFOLI
 }
