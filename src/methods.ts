@@ -7,7 +7,7 @@ import { QuantumState } from "@qramana/qramana-common-types";
  /**
   * toffoliゲート
   */
- export function toffoli(quantumState: QuantumState, controlBitId0: number, controlBitId1: number, targetBitId: number) {
+export function toffoli(quantumState: QuantumState, controlBitId0: number, controlBitId1: number, targetBitId: number) {
     quantumState.t(controlBitId1);
     quantumState.h(targetBitId);
     quantumState.t(targetBitId);
@@ -27,7 +27,7 @@ import { QuantumState } from "@qramana/qramana-common-types";
     quantumState.h(targetBitId);
 }
 
- function t_dag(quantumState: QuantumState, bitId: number) {
+function t_dag(quantumState: QuantumState, bitId: number) {
     quantumState.t(bitId);
     quantumState.t(bitId);
     quantumState.t(bitId);
