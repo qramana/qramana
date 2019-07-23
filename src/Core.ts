@@ -1,4 +1,4 @@
-import { QuantumState, QuantumStateGenerator} from "./QuantumState";
+import { QuantumState, QuantumStateGenerator} from "@qramana/qramana-common-types";
 import { Qubit, QubitParameter } from "./Qubit";
 import { QuantumOperationTypes } from "./types";
 

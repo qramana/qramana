@@ -1,5 +1,5 @@
 import { Core } from "./Core";
-import { QuantumStateInitializeType } from "./QuantumState";
+import { QuantumStateInitializeType } from "@qramana/qramana-common-types";
 import { QuantumOperationTypes } from "./types";
 
 /**

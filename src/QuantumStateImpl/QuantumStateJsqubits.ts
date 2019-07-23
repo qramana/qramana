@@ -1,4 +1,4 @@
-import { QuantumState, MeasurementResult, QuantumStateInitializeType, QuantumStateGenerator } from "../QuantumState";
+import { QuantumState, MeasurementResult, QuantumStateInitializeType, QuantumStateGenerator } from "@qramana/qramana-common-types";
 import * as jsq from "jsqubits";
 
 /**

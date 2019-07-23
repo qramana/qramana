@@ -1,4 +1,4 @@
-import { QuantumState, MeasurementResult, QuantumStateGenerator } from "./QuantumState";
+import { QuantumState, MeasurementResult, QuantumStateGenerator } from "@qramana/qramana-common-types";
 export { QuantumState, MeasurementResult, QuantumStateGenerator };
 import { QuantumStateJsqubits, quantumStateJsQubitsGenerator } from "./QuantumStateImpl/QuantumStateJsqubits";
 export { QuantumStateJsqubits };

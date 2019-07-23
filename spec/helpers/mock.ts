@@ -1,5 +1,5 @@
 import { Core, QuantumStateJsqubits } from "../../lib/index";
-import { QuantumStateInitializeType } from "../../lib/QuantumState";
+import { QuantumStateInitializeType } from "@qramana/qramana-common-types";
 
 export class MockCore extends Core {
 
