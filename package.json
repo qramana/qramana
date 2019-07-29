@@ -1,6 +1,6 @@
 {
   "name": "@qramana/qramana",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "TypeScript library for quantum calculation",
   "main": "lib/index.js",
   "scripts": {
@@ -26,18 +26,18 @@
   },
   "author": "Qramana Team (https://github.com/qramana)",
   "license": "MIT",
+  "files": [
+    "lib"
+  ],
   "devDependencies": {
     "@types/jest": "^24.0.11",
     "@types/jsqubits": "1.1.0",
-    "@qramana/qramana-common-types": "0.0.1",
     "jest": "^24.1.0",
     "tslint": "^5.4.3",
     "typescript": "^3.0.0"
   },
-  "files": [
-    "lib"
-  ],
   "dependencies": {
+    "@qramana/qramana-common-types": "0.0.1",
     "jsqubits": "^1.1.1"
   }
 }
