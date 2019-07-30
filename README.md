@@ -31,7 +31,7 @@ $ node qubit.js
 0
 ```
 
-If you need more detail, see [tutorial](docs/tutorial.md)
+If you need more detail, see [tutorial](docs/tutorial.md).
 
 ## Build qramana
 
