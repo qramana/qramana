@@ -90,7 +90,7 @@ export class Qubit {
     }
 
     /**
-     * cnot演算を適用する
+     * controlled x演算を適用する
      * 標的量子ビットには呼び出し元のQubitが指定される
      *
      * @param controlQubit 制御量子ビット
