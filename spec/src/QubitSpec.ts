@@ -167,6 +167,48 @@ describe("test Qubit", () => {
                 done();
             });
         });
+        describe("#toffoli", () => {
+            it("applies toffoli operator to 000-ket", (done: any) => {
+                const control1Qubit = new q.Qubit({ value: 0 });
+                const control2Qubit = new q.Qubit({ value: 0 });
+                const targetQubit = new q.Qubit({ value: 0 });
+                targetQubit.toffoli(control1Qubit, control2Qubit);
+                expect(control1Qubit.toString()).toBe("|000>");
+                expect(control2Qubit.toString()).toBe("|000>");
+                expect(targetQubit.toString()).toBe("|000>");
+                done();
+            });
+            it("applies toffoli operator to 001-ket", (done: any) => {
+                const control1Qubit = new q.Qubit({ value: 0 });
+                const control2Qubit = new q.Qubit({ value: 0 });
+                const targetQubit = new q.Qubit({ value: 1 });
+                targetQubit.toffoli(control1Qubit, control2Qubit);
+                expect(control1Qubit.toString()).toBe("|001>");
+                expect(control2Qubit.toString()).toBe("|001>");
+                expect(targetQubit.toString()).toBe("|001>");
+                done();
+            });
+            it("applies toffoli operator to 110-ket", (done: any) => {
+                const control1Qubit = new q.Qubit({ value: 1 });
+                const control2Qubit = new q.Qubit({ value: 1 });
+                const targetQubit = new q.Qubit({ value: 0 });
+                targetQubit.toffoli(control1Qubit, control2Qubit);
+                expect(control1Qubit.toString()).toBe("|111>");
+                expect(control2Qubit.toString()).toBe("|111>");
+                expect(targetQubit.toString()).toBe("|111>");
+                done();
+            });
+            it("applies toffoli operator to 111-ket", (done: any) => {
+                const control1Qubit = new q.Qubit({ value: 1 });
+                const control2Qubit = new q.Qubit({ value: 1 });
+                const targetQubit = new q.Qubit({ value: 1 });
+                targetQubit.toffoli(control1Qubit, control2Qubit);
+                expect(control1Qubit.toString()).toBe("|110>");
+                expect(control2Qubit.toString()).toBe("|110>");
+                expect(targetQubit.toString()).toBe("|110>");
+                done();
+            });
+        });
         describe("#controlledX which is equivallent to cnot", () => {
             it("applied cnot operator to 00-ket", (done: any) => {
                 const controlQubit = new q.Qubit({ value: "|0>" });
