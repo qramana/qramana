@@ -11,7 +11,7 @@ Usage:
 // It generates |0> qubit.
 const qubit0 = new Qubit();
 // It generates |1> qubit.
-const qubit1 = new Qubit(1);
+const qubit1 = new Qubit({ value: 1 });
 ```
 
 ## Single Qubit Gates
