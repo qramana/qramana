@@ -9,9 +9,9 @@ The default value is `0`.
 Usage:
 ```
 // It generates |0> qubit.
-qubit0 = new Qubit();
+const qubit0 = new Qubit();
 // It generates |1> qubit.
-qubit1 = new Qubit(1);
+const qubit1 = new Qubit(1);
 ```
 
 ## Single Qubit Gates
