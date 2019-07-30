@@ -29,7 +29,7 @@ rotateX(angle: number) | It applies a rotate gate which arounds axis X with `ang
 rotateY(angle: number) | It applies a rotate gate which arounds axis Y with `angle` angle.
 rotateZ(angle: number) | It applies a rotate gate which arounds axis Z with `angle` angle.
 h() | It applies an Hadamard gate.
-measure() | It measures its qubit.
+measure() | It measures its qubit with Z basis. It returns `0` or `1` number which represents a measurement result.
 
 ## Multi Qubit Gates
 Operations you can apply to multi qubit.
