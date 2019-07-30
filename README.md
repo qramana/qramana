@@ -31,6 +31,8 @@ $ node qubit.js
 0
 ```
 
+If you need more details, see [tutorial](docs/tutorial.md).
+
 ## Build qramana
 
 If you want to build qramana to modify library code, clone and install dependencies.
