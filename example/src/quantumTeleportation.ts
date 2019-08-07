@@ -1,4 +1,4 @@
-import * as p from "../../lib/index";
+import * as p from "@qramana/qramana";
 
 const q1 = new p.Qubit({ value: 0 });
 const q2 = new p.Qubit({ value: 0 });
