@@ -25,4 +25,6 @@ q1.h();
 q2.h();
 
 // Show results
-console.log("result", JSON.stringify(q1.toString()));
+var m1 = q1.measure();
+var m2 = q2.measure();
+console.log("Measurement result: q1=" + m1 + ", q2=" + m2);
