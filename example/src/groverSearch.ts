@@ -1,4 +1,4 @@
-import * as p from "../../lib/index";
+import * as p from "@qramana/qramana";
 
 // Find |11> states.
 
