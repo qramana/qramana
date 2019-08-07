@@ -25,6 +25,6 @@ q1.h();
 q2.h();
 
 // Show results
-var m1 = q1.measure();
-var m2 = q2.measure();
+const m1 = q1.measure();
+const m2 = q2.measure();
 console.log("Measurement result: q1=" + m1 + ", q2=" + m2);
