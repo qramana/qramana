@@ -5,7 +5,6 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc -p ./",
-    "build:example": "tsc -p ./example",
     "test": "npm run build && npm run test:build && npm run test:jest && npm run lint",
     "test:build": "tsc -p ./spec",
     "test:jest": "jest",
