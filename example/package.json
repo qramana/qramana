@@ -1,0 +1,17 @@
+{
+  "name": "qramana-exampke",
+  "version": "0.0.0",
+  "description": "example for qramana",
+  "scripts": {
+    "build": "tsc -p ./"
+  },
+  "private": true,
+  "author": "Qramana Team (https://github.com/qramana)",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "typescript": "^3.0.0"
+  },
+  "dependencies": {
+    "@qramana/qramana": "0.0.3"
+  }
+}
