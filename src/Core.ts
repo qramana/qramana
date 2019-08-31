@@ -51,7 +51,7 @@ export class Core {
      * Qubitが新しく生成されたとき、Qubitから呼ばれる
      * 生成されたQubitに紐づく新しいQuantumStateを生成し、Core管理下に加える
      */
-    createNewQubit(qubit: Qubit, param: QubitParameter) {
+    createNewQubit(qubit: Qubit, param: QubitParameter): void {
         // Qubitの初期化パラメータから、QuantumStateを生成する
         const quantumState = this._quantumStateGenerator(param.value);
         this._mapQubitQuantumState.push({
@@ -61,7 +61,7 @@ export class Core {
         });
     }
 
-    requestOperation(quantumOperationType: QuantumOperationTypes, ...qubits: Qubit[]) {
+    requestOperation(quantumOperationType: QuantumOperationTypes, ...qubits: Qubit[]): void {
         // qubitsの順序で紐づいたQubitQuantumStateMapElementを取得する
         const qubitMapElements = qubits.map(qubit => this._lookupQubitQuantumStateMapElementFromQubit(qubit));
 
@@ -73,13 +73,14 @@ export class Core {
             case QuantumOperationTypes.Z:
             case QuantumOperationTypes.S:
             case QuantumOperationTypes.T:
-            case QuantumOperationTypes.H:
+            case QuantumOperationTypes.H: {
                 const mapElement = qubitMapElements[0]; // 単一量子ビットなので常にlength = 1
                 this._requestOperationSingleQubit(quantumOperationType, mapElement);
                 break;
+            }
             case QuantumOperationTypes.CONTROLLED_X:
             case QuantumOperationTypes.CONTROLLED_Y:
-            case QuantumOperationTypes.CONTROLLED_Z:
+            case QuantumOperationTypes.CONTROLLED_Z: {
                 const controlQubitMapElement = qubitMapElements[0];
                 targetQubitMapElement = qubitMapElements[1];
                 // Controlled系操作の対象量子ビットが合成系ではない場合、先にマージして合成系のQuantumState化する
@@ -88,7 +89,8 @@ export class Core {
                 }
                 this._requestControlledOperationQubit(quantumOperationType, controlQubitMapElement, targetQubitMapElement);
                 break;
-            case QuantumOperationTypes.TOFFOLI:
+            }
+            case QuantumOperationTypes.TOFFOLI: {
                 const control0QubitMapElement = qubitMapElements[0];
                 const control1QubitMapElement = qubitMapElements[1];
                 targetQubitMapElement = qubitMapElements[2];
@@ -104,12 +106,13 @@ export class Core {
                     control1QubitMapElement.bitId,
                     targetQubitMapElement.bitId);
                 break;
+            }
             default:
                 // no match operation
         }
     }
 
-    requestRotateOperation(quantumOperationType: QuantumOperationTypes, angle: number, qubit: Qubit) {
+    requestRotateOperation(quantumOperationType: QuantumOperationTypes, angle: number, qubit: Qubit): void {
         // 回転角を引数として必要とする操作は引数が異なるので分ける
         // メモ：上手いことrequestOperationと引数が異なっても扱えないか……
         const mapElement = this._lookupQubitQuantumStateMapElementFromQubit(qubit);
@@ -123,7 +126,7 @@ export class Core {
             case QuantumOperationTypes.ROTATEY:
                 mapElement.quantumState.ry(mapElement.bitId, angle);
                 break;
-            case QuantumOperationTypes.ROTATEX:
+            case QuantumOperationTypes.ROTATEZ:
                 mapElement.quantumState.rz(mapElement.bitId, angle);
                 break;
             default:
@@ -147,7 +150,7 @@ export class Core {
     /**
      * 単一量子ビットの量子操作
      */
-    _requestOperationSingleQubit(quantumOperationType: QuantumOperationTypes, mapElement: QubitQuantumStateMapElement) {
+    _requestOperationSingleQubit(quantumOperationType: QuantumOperationTypes, mapElement: QubitQuantumStateMapElement): void {
         switch (quantumOperationType) {
             case QuantumOperationTypes.X:
                 mapElement.quantumState.x(mapElement.bitId);
@@ -175,18 +178,12 @@ export class Core {
     /**
      * Controlled系のための複数量子ビット操作
      */
-    _requestControlledOperationQubit(
+    _requestControlledOperationQubit (
         quantumOperationType: QuantumOperationTypes,
         controlQubitMapElement: QubitQuantumStateMapElement,
         targetQubitMapElement: QubitQuantumStateMapElement
-    ) {
+    ): void {
         switch (quantumOperationType) {
-            case QuantumOperationTypes.CONTROLLED_X:
-                targetQubitMapElement.quantumState.controlledX(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
-                break;
-            case QuantumOperationTypes.CONTROLLED_Y:
-                targetQubitMapElement.quantumState.controlledY(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
-                break;
             case QuantumOperationTypes.CONTROLLED_X:
                 targetQubitMapElement.quantumState.controlledX(controlQubitMapElement.bitId, targetQubitMapElement.bitId);
                 break;
@@ -212,7 +209,7 @@ export class Core {
     /**
      * 引数のQubitを持つQubitQuantumStateMapElementを返す
      */
-    _lookupQubitQuantumStateMapElementFromQubit(qubit: Qubit) {
+    _lookupQubitQuantumStateMapElementFromQubit(qubit: Qubit): QubitQuantumStateMapElement {
         return this._mapQubitQuantumState.find((mapElement) => mapElement.qubit === qubit);
         // todo: findできなかったケースのハンドリング
     }

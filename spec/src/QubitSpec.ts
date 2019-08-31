@@ -11,6 +11,7 @@ describe("test Qubit", () => {
     describe("new", () => {
         it("will finish without throwing Error", (done: any) => {
             const qubit = new q.Qubit({ value: 0 });
+            expect(!!qubit).toBe(true);
             done();
         });
     });
