@@ -10,7 +10,7 @@ export { Core, CoreConfig };
 /**
  * Plamanaの挙動を変更する初期化パラメータ
  */
-export interface configParameter {
+export interface ConfigParameter {
     /**
      * QuantumStateのジェネレータを変更し、QuantumStateGeneratorを継承した任意の関数に変更するI/F
      */
@@ -25,7 +25,7 @@ const coreConfig: CoreConfig = {
  * Plamanaの挙動を設定する
  * 最初のQubitを生成した後に呼び出した場合、その動作は不定である
  */
-export function config(config: configParameter) {
+export function config(config: ConfigParameter): void {
     // default以外のQuantumState実装を差し込む
     if (config.customQuantumStateGenerator) coreConfig.quantumStateGenerator = config.customQuantumStateGenerator;
 }

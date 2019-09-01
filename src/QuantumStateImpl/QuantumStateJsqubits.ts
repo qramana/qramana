@@ -39,14 +39,13 @@ export class QuantumStateJsqubits extends QuantumState {
                 case "|1>":
                     this._qstate = this._qstate.x(0);
                     break;
-
                 case "+":
-                        this._qstate = this._qstate.hadamard(0);
-                        break;
+                    this._qstate = this._qstate.hadamard(0);
+                    break;
                 case "-":
-                        this._qstate = this._qstate.x(0);
-                        this._qstate = this._qstate.hadamard(0);
-                        break;
+                    this._qstate = this._qstate.x(0);
+                    this._qstate = this._qstate.hadamard(0);
+                    break;
                 default:
                     // invalid state
             }
