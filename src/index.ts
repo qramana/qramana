@@ -6,6 +6,8 @@ import { Qubit } from "./Qubit";
 export { Qubit };
 import { Core, CoreConfig } from "./Core";
 export { Core, CoreConfig };
+import { intToQubits } from "./qlib/common";
+export { intToQubits };
 
 /**
  * Plamanaの挙動を変更する初期化パラメータ
