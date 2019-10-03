@@ -8,7 +8,7 @@ describe("Test intToQubits", () => {
         q.Qubit._core = core;
     });
 
-    it("generates quantum bits", (done: any) => {
+    it("generates quantum bits.", (done: any) => {
         const qubits = q.Util.intToQubits(6,5);
         expect(qubits.length).toBe(5);
         expect(qubits[0].toString()).toBe("|0>");
@@ -19,10 +19,20 @@ describe("Test intToQubits", () => {
         done();
     });
 
-    it("returns error if length is short", (done: any) => {
+    it("returns error if length is short.", (done: any) => {
         const desired = new Error("Designated qubits length cannot express given number.");
         try {
             const qubits = q.Util.intToQubits(8, 2);
+        } catch(e) {
+            expect(e.message).toBe(desired.message);
+            done();
+        }
+    });
+
+    it("returns error if value is not integer.", (done: any) => {
+        const desired = new Error("value must be integer.");
+        try {
+            const qubits = q.Util.intToQubits(1.5, 2);
         } catch(e) {
             expect(e.message).toBe(desired.message);
             done();
