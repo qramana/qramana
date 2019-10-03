@@ -6,7 +6,7 @@ import { Qubit } from "./Qubit";
 export { Qubit };
 import { Core, CoreConfig } from "./Core";
 export { Core, CoreConfig };
-import { Util } from "./qlib/common";
+import * as Util from "./qlib/common";
 export { Util };
 
 /**
