@@ -20,7 +20,7 @@ describe("Test intToQubits", () => {
     });
 
     it("returns error if length is short", (done: any) => {
-        const desired = new Error('Designated qubits length cannot express given number.');
+        const desired = new Error("Designated qubits length cannot express given number.");
         try {
             const qubits = q.Util.intToQubits(8, 2);
         } catch(e) {
