@@ -21,7 +21,7 @@ export function intToQubits(value: number, bitLength: number): Qubit[] {
     const qubits: Qubit[] = [];
 
     for (let i = 0; i<bitLength; i++) {
-        if (i < valueLength && valueString[valueLength - i - 1] == '1') {
+        if (i < valueLength && valueString[valueLength - i - 1] === "1") {
             qubits.push(new Qubit({ value: 1 }));
         } else {
             qubits.push(new Qubit({ value: 0 }));
