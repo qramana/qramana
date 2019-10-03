@@ -1,28 +1,33 @@
 import { Qubit } from "../Qubit";
 
-/**
- * 任意の数を表現する量子ビット列を生成する
- *
- * @param num    表現したい数
- * @param length 生成される量子ビットの数
- */
-export function intToQubits(num: number , length: number): Qubit[] {
-    const numStr = num.toString(2);
+export module Util {
+    /**
+     * 任意の数を表現する量子ビット列を生成する
+     *
+     * @param value     表現したい数
+     * @param bitlength 生成される量子ビットの数
+     */
+    export function intToQubits(value: number, bitLength: number): Qubit[] {
+        const valueString = value.toString(2);
+        const valueLength = valueString.length;
 
-    if (numStr.length > length) {
-        throw new Error('Designated qubits length cannot express given number.');
-    }
+        if (valueLength > bitLength) {
+            throw new Error("Designated qubits length cannot express given number.");
+        }
 
-    const qubits: Qubit[] = [];
-    const numLen = numStr.length;
+        const qubits: Qubit[] = [];
 
-    for (let i = 0; i<length; i++) {
-        if (i < numLen && numStr[numLen - i - 1] == '1') {
-            qubits.push(new Qubit({ value: 1 }));
-        } else {
+        valueString.forEach((bit, index) => {
+            if (valueString[valueLength - index - 1] === "1") {
+                qubits.push(new Qubit({ value: 1 }));
+            } else {
+                qubits.push(new Qubit({ value: 0 }));
+            }
+        });
+        for (let i = 0; i < bitLength - valueLength; i++) {
             qubits.push(new Qubit({ value: 0 }));
         }
-    }
 
-    return qubits;
+        return qubits;
+    }
 }
