@@ -8,7 +8,7 @@ export module Util {
      * @param bitlength 生成される量子ビットの数
      */
     export function intToQubits(value: number, bitLength: number): Qubit[] {
-        if (!Number.isinteger(value)) {
+        if (!Number.isInteger(value)) {
             throw new Error("value must be integer.");
         }
 
