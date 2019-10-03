@@ -8,6 +8,10 @@ export module Util {
      * @param bitlength 生成される量子ビットの数
      */
     export function intToQubits(value: number, bitLength: number): Qubit[] {
+        if (!Number.isinteger(value)) {
+            throw new Error("value must be integer.");
+        }
+
         const valueString = value.toString(2);
         const valueLength = valueString.length;
 
@@ -17,15 +21,12 @@ export module Util {
 
         const qubits: Qubit[] = [];
 
-        valueString.forEach((bit, index) => {
-            if (valueString[valueLength - index - 1] === "1") {
+        for (let i = 0; i<bitLength; i++) {
+            if (i < valueLength && valueString[valueLength - i - 1] == '1') {
                 qubits.push(new Qubit({ value: 1 }));
             } else {
                 qubits.push(new Qubit({ value: 0 }));
             }
-        });
-        for (let i = 0; i < bitLength - valueLength; i++) {
-            qubits.push(new Qubit({ value: 0 }));
         }
 
         return qubits;
