@@ -1,6 +1,6 @@
 import { Qubit } from "../Qubit";
 
-export module Util {
+export namespace Util {
     /**
      * 任意の数を表現する量子ビット列を生成する
      *
