@@ -313,4 +313,18 @@ describe("test Qubit", () => {
             });
         });
     });
+    describe("Measurement operator", () => {
+        it("returns 0 when measuring |0> state", (done: any) => {
+            const qubit = new q.Qubit({ value: 0 });
+            const res = qubit.measure();
+            expect(res).toBe(0);
+            done();
+        });
+        it("returns 1 when measuring |1> state", (done: any) => {
+            const qubit = new q.Qubit({ value: 1 });
+            const res = qubit.measure();
+            expect(res).toBe(1);
+            done();
+        });
+    });
 });
