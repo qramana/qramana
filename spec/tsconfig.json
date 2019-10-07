@@ -13,6 +13,6 @@
     "./helpers/mock.ts",
     "./src/QubitSpec.ts",
     "./src/QuantumStateJsqubitsSpec.ts",
-    "./src/qlib/commonSpec.ts"
+    "./src/qlib/UtilSpec.ts"
   ]
 }
