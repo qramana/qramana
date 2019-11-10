@@ -1,6 +1,6 @@
 import { QuantumState, QuantumStateGenerator} from "@qramana/qramana-common-types";
 import { Qubit, QubitParameter } from "./Qubit";
-import { QuantumOperationTypes } from "./types";
+import { QuantumOperationTypes, CloneQubitsResult } from "./types";
 import * as methods from "./methods";
 
 /**
@@ -145,6 +145,36 @@ export class Core {
     toStringQubit(qubit: Qubit): string {
         const qubitMapElement = this._lookupQubitQuantumStateMapElementFromQubit(qubit);
         return qubitMapElement.quantumState.toString();
+    }
+
+    getCompositedQubits(qubit: Qubit): Qubit[] {
+        const targetMapElementQuantumState = this._lookupQubitQuantumStateMapElementFromQubit(qubit).quantumState;
+        return this._mapQubitQuantumState
+            .filter(mapElement => mapElement.quantumState === targetMapElementQuantumState)
+            .map(mapElement => mapElement.qubit);
+    }
+
+    cloneQubits(qubit: Qubit): CloneQubitsResult {
+        const targetQuantumState = this._lookupQubitQuantumStateMapElementFromQubit(qubit).quantumState;
+        const cloneQuantumState = targetQuantumState.simulated.clone();
+
+        const compositedQubitMapElements = this._mapQubitQuantumState.filter(
+            mapElement => mapElement.quantumState === targetQuantumState);
+
+        const newQubitMapElements = compositedQubitMapElements.map((compositedQubitMapElement) => {
+            const cloneQubit = new Qubit();
+            const cloneQubitMapElement = this._lookupQubitQuantumStateMapElementFromQubit(cloneQubit);
+            const tempQuantumState = cloneQubitMapElement.quantumState; // need delete and wipe from mapQubitQuantumState
+            cloneQubitMapElement.bitId = compositedQubitMapElement.bitId;
+            cloneQubitMapElement.quantumState = cloneQuantumState;
+            return cloneQubitMapElement;
+        });
+
+        return {
+            index: compositedQubitMapElements.findIndex(mapElement => mapElement.qubit === qubit),
+            qubits: newQubitMapElements.map(mapElemement => mapElemement.qubit)
+        };
+
     }
 
     /**
