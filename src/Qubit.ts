@@ -16,7 +16,14 @@ export interface QubitParameter {
  * シミュレータ環境でのみ実装できる機能
  */
 type SimulatorLimitedQubitMethods = {
+    /**
+     * Qubitが含まれる量子状態を複製する
+     */
     clone: () => CloneQubitsResult;
+
+    /**
+     * Qubitが含まれる量子状態のQubit数を返す
+     */
     compositedQubits: () => Qubit[];
 
 }
