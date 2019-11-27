@@ -1,6 +1,6 @@
 import { Core } from "./Core";
 import { QuantumStateInitializeType } from "@qramana/qramana-common-types";
-import { QuantumOperationTypes } from "./types";
+import { QuantumOperationTypes, CloneQubitsResult } from "./types";
 
 /**
  * Qubitの初期化パラメータ
@@ -13,9 +13,27 @@ export interface QubitParameter {
 }
 
 /**
+ * シミュレータ環境でのみ実装できる機能
+ */
+type SimulatorLimitedQubitMethods = {
+    /**
+     * Qubitが含まれる量子状態を複製する
+     */
+    clone: () => CloneQubitsResult;
+
+    /**
+     * Qubitが含まれる量子状態のQubit数を返す
+     */
+    compositedQubits: () => Qubit[];
+
+}
+
+/**
  * 量子ビットを表現するクラス
  */
 export class Qubit {
+
+    simulated: SimulatorLimitedQubitMethods;
 
     /**
      * ライブラリの初期化時に代入されるQubitとQuantumStateを紐づける管理クラス
@@ -26,6 +44,7 @@ export class Qubit {
     constructor(param: QubitParameter = { value: 0 }) {
         // CoreにQubitを登録する
         Qubit._core.createNewQubit(this, param);
+        this._createSimulated();
     }
 
     /**
@@ -166,4 +185,10 @@ export class Qubit {
         return Qubit._core.toStringQubit(this);
     }
 
+    private _createSimulated() {
+        this.simulated = {
+            clone: () => Qubit._core.cloneQubits(this),
+            compositedQubits: () => Qubit._core.getCompositedQubits(this)
+        };
+    }
 }

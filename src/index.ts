@@ -10,7 +10,7 @@ import * as Util from "./qlib/Util";
 export { Util };
 
 /**
- * Plamanaの挙動を変更する初期化パラメータ
+ * qlamanaの挙動を変更する初期化パラメータ
  */
 export interface ConfigParameter {
     /**
@@ -24,7 +24,7 @@ const coreConfig: CoreConfig = {
 };
 
 /**
- * Plamanaの挙動を設定する
+ * qlamanaの挙動を設定する
  * 最初のQubitを生成した後に呼び出した場合、その動作は不定である
  */
 export function config(config: ConfigParameter): void {

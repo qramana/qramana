@@ -1,5 +1,7 @@
+import { Qubit } from ".";
+
 /**
- * Plamanaがサポートする量子操作
+ * qlamanaがサポートする量子操作
  */
 export enum QuantumOperationTypes {
     X,
@@ -16,4 +18,16 @@ export enum QuantumOperationTypes {
     ROTATEY,
     ROTATEZ,
     TOFFOLI
+}
+
+export interface CloneQubitsResult {
+    /**
+     * cloneされたQubit
+     */
+    qubits: Qubit[];
+
+    /**
+     * clone元に指定されたQubitのqubits配列上のインデックス
+     */
+    index: number;
 }

@@ -32,4 +32,40 @@ describe("test QuantumStateJsQubits", () => {
             done();
         });
     });
+
+    describe("#simulated", () => {
+        describe("#clone", () => {
+            it(" clone 0 state", (done: any) => {
+                const state = new q.QuantumStateJsqubits(0);
+                const clonedState = state.simulated.clone();
+                expect(state.toString()).toBe(clonedState.toString());
+                done();
+            });
+            it(" clone hadamard state", (done: any) => {
+                const state = new q.QuantumStateJsqubits(0);
+                state.h(0);
+                const clonedState = state.simulated.clone();
+                expect(state.toString()).toBe(clonedState.toString());
+                done();
+            });
+            it(" clone 2 qubit state", (done: any) => {
+                const state = (new q.QuantumStateJsqubits(0)).merge(new q.QuantumStateJsqubits(0));
+                const clonedState = state.simulated.clone();
+                expect(state.toString()).toBe(clonedState.toString());
+                done();
+            });
+            it(" clone 2 qubit hadamard state", (done: any) => {
+                const state0 = new q.QuantumStateJsqubits(0);
+                const state1 = new q.QuantumStateJsqubits(0);
+                state0.h(0);
+                state1.h(0);
+                const state = state0.merge(state1);
+                const clonedState = state.simulated.clone();
+                expect(state.toString()).toBe(clonedState.toString());
+                done();
+            });
+        });
+
+    });
+
 });

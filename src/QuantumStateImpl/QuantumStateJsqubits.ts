@@ -50,6 +50,14 @@ export class QuantumStateJsqubits extends QuantumState {
                     // invalid state
             }
         }
+
+        this.simulated = {
+            clone: () => {
+                const newQuantumState = new QuantumStateJsqubits(0);
+                newQuantumState._qstate = this._qstate.normalize(); // 厳密にはcloneではないが、qramanaでnormalizeされていないQStateを利用するケースは無い
+                return newQuantumState;
+            }
+        };
     }
 
     x(bitId: number) {
