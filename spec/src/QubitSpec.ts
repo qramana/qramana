@@ -1,5 +1,6 @@
 import * as q from "../../lib/index";
 import * as mock from "../helpers/mock";
+import { QuantumStateInitializeTypeNumber } from "@qramana/qramana-common-types";
 
 describe("test Qubit", () => {
     let core;
@@ -327,4 +328,51 @@ describe("test Qubit", () => {
             done();
         });
     });
+    describe("simulated", () => {
+        describe("clone", () => {
+            it("clone qubit", (done: any) => {
+                const qubit = new q.Qubit({ value: 0 });
+                const clonedQubitResult = qubit.simulated.clone();
+                expect(clonedQubitResult.index).toBe(0);
+                expect(clonedQubitResult.qubits.length).toBe(1);
+                expect(qubit.toString()).toBe(clonedQubitResult.qubits[0].toString());
+                done();
+            });
+            it("clone 2 qubits", (done: any) => {
+                const qubit0 = new q.Qubit({ value: 0 });
+                const qubit1 = new q.Qubit({ value: 1 });
+                qubit0.h();
+                qubit1.cnot(qubit0);
+                const clonedQubit0Result = qubit0.simulated.clone();
+                expect(clonedQubit0Result.index).toBe(0);
+                expect(clonedQubit0Result.qubits.length).toBe(2);
+                expect(qubit0.toString()).toBe(clonedQubit0Result.qubits[0].toString());
+
+                const clonedQubit1Result = qubit1.simulated.clone();
+                expect(clonedQubit1Result.index).toBe(1);
+                expect(clonedQubit1Result.qubits.length).toBe(2);
+                expect(qubit1.toString()).toBe(clonedQubit1Result.qubits[1].toString());
+                done();
+            });
+        });
+
+        describe("compositedQubits", () => {
+            it("index", (done: any) => {
+                const qubits: q.Qubit[] = [new q.Qubit({ value: 0 })];
+                for (let i = 0; i < 10; i++) {
+                    const value = (i % 2) as QuantumStateInitializeTypeNumber;
+                    const qubit = new q.Qubit({ value: value });
+                    qubit.cnot(qubits[0]);
+                    qubits.push(qubit);
+                }
+                qubits.forEach((qubit, index) => {
+                    const compositedQubits = qubit.simulated.compositedQubits();
+                    expect(compositedQubits.length).toBe(qubits.length);
+                    expect(qubit.toString()).toBe(compositedQubits[index].toString());
+                });
+                done();
+            });
+        });
+    });
+
 });
