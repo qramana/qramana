@@ -9,6 +9,6 @@ export class MockQuantumStateJsQubits extends QuantumStateJsqubits {
 
 }
 
-export function quantumStateJsQubitsGenerator(param: QuantumStateInitializeType) {
+export function quantumStateJsQubitsGenerator(param: QuantumStateInitializeType): MockQuantumStateJsQubits {
     return new MockQuantumStateJsQubits(param);
 }

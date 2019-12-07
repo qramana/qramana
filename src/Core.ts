@@ -264,8 +264,8 @@ export class Core {
         const mergedQuantumState = mapElementLeft.quantumState.merge(mapElementRight.quantumState);
 
         // 新しいQuantumStateを、古いQuantumStateを参照しているQubitQuantumStateMapElementに適用する
-        leftTensorQuantumStateMapElements.forEach((mapElement) => {mapElement.quantumState = mergedQuantumState; });
-        rightTensorQuantumStateMapElements.forEach((mapElement) => {mapElement.quantumState = mergedQuantumState; });
+        leftTensorQuantumStateMapElements.forEach((mapElement) => { mapElement.quantumState = mergedQuantumState; });
+        rightTensorQuantumStateMapElements.forEach((mapElement) => { mapElement.quantumState = mergedQuantumState; });
 
         // QuantumStateの更新で、テンソル積の右側はbitIdが動くので更新する
         leftTensorQuantumStateMapElements.forEach(mapElement => mapElement.bitId = mapElement.bitId + mapElementRightLength);

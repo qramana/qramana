@@ -60,59 +60,59 @@ export class QuantumStateJsqubits extends QuantumState {
         };
     }
 
-    x(bitId: number) {
+    x(bitId: number): void {
         this._qstate = this._qstate.X(bitId);
     }
 
-    y(bitId: number) {
+    y(bitId: number): void {
         this._qstate = this._qstate.Y(bitId);
     }
 
-    z(bitId: number) {
+    z(bitId: number): void {
         this._qstate = this._qstate.Z(bitId);
     }
 
-    r(bitId: number, angle: number) {
+    r(bitId: number, angle: number): void {
         this._qstate = this._qstate.r(bitId, angle);
     }
 
-    s(bitId: number) {
+    s(bitId: number): void {
         this._qstate = this._qstate.s(bitId);
     }
 
-    t(bitId: number) {
+    t(bitId: number): void {
         this._qstate = this._qstate.t(bitId);
     }
 
-    h(bitId: number) {
+    h(bitId: number): void {
         this._qstate = this._qstate.hadamard(bitId);
     }
 
-    cnot(controllBitId: number, targetBitId: number) {
+    cnot(controllBitId: number, targetBitId: number): void {
         this._qstate = this._qstate.controlledX(controllBitId, targetBitId);
     }
 
-    controlledX(controllBitId: number, targetBitId: number) {
+    controlledX(controllBitId: number, targetBitId: number): void {
         this._qstate = this._qstate.controlledX(controllBitId, targetBitId);
     }
 
-    controlledY(controllBitId: number, targetBitId: number) {
+    controlledY(controllBitId: number, targetBitId: number): void {
         this._qstate = this._qstate.controlledY(controllBitId, targetBitId);
     }
 
-    controlledZ(controllBitId: number, targetBitId: number) {
+    controlledZ(controllBitId: number, targetBitId: number): void {
         this._qstate = this._qstate.controlledZ(controllBitId, targetBitId);
     }
 
-    rx(bitId: number, angle: number) {
+    rx(bitId: number, angle: number): void {
         this._qstate = this._qstate.rotateX(bitId, angle);
     }
 
-    ry(bitId: number, angle: number) {
+    ry(bitId: number, angle: number): void {
         this._qstate = this._qstate.rotateY(bitId, angle);
     }
 
-    rz(bitId: number, angle: number) {
+    rz(bitId: number, angle: number): void {
         this._qstate = this._qstate.rotateZ(bitId, angle);
     }
 
@@ -130,11 +130,11 @@ export class QuantumStateJsqubits extends QuantumState {
         return this;
     }
 
-    get length() {
+    get length(): number {
         return this._qstate.numBits();
     }
 
-    toString() {
+    toString(): string {
         return this._qstate.toString();
     }
 }
