@@ -20,6 +20,7 @@ Users don't have to consider how qubit1 and qubit2 are entangled.
 qubit1.x();
 qubit2.h();
 ```
+You can see qubit interface reference [here](./apidocs/qubit.md).
 
 ## Can be implemented in browser application (e.g. browser games)
 `qramana` is a typescript library.
@@ -27,9 +28,12 @@ Therefore, users can use `qramana` in web browser directly.
 
 ## Pick and choose background system that meke sense for you(Future)
 `qramana` can choose some backend system.
-If you want to add new backend system, you can use it by implementing driver.
+If you want to add new backend systems, you can use it by implementing driver.
 Example of the driver is [here](../src/QuantumStateImpl/QuantumStateJsqubits.ts).
 Currently, `qramana` uses [jsqubits](http://davidbkemp.github.io/jsqubits/) for its backend.
+
+# Tutorial
+[Tutorial](./tutorial.md)
 
 # example
 Sample codes are [here](../example).
