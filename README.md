@@ -1,3 +1,7 @@
+<p align="center">
+<img src="https://raw.githubusercontent.com/qramana/qramana/master/img/qramana.png"/>
+</p>
+
 # qramana
 
  `qramana` is a TypeScript library for quantum calculation.
