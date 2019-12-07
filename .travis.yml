@@ -1,4 +1,6 @@
-os: linux
+os:
+- windows
+- linux
 dist: bionic
 sudo: false
 script:

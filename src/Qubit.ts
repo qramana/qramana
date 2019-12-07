@@ -24,22 +24,20 @@ type SimulatorLimitedQubitMethods = {
     /**
      * Qubitが含まれる量子状態のQubit数を返す
      */
-    compositedQubits: () => Qubit[];
-
-}
+    compositedQubits: () => Qubit[]
+};
 
 /**
  * 量子ビットを表現するクラス
  */
 export class Qubit {
-
-    simulated: SimulatorLimitedQubitMethods;
-
     /**
      * ライブラリの初期化時に代入されるQubitとQuantumStateを紐づける管理クラス
      * Qubitに対する量子操作リクエストは、Coreを通して量子状態の実態に反映される
      */
     static _core: Core;
+
+    simulated: SimulatorLimitedQubitMethods;
 
     constructor(param: QubitParameter = { value: 0 }) {
         // CoreにQubitを登録する
@@ -50,21 +48,21 @@ export class Qubit {
     /**
      * x演算を適用する
      */
-    x() {
+    x(): void {
         Qubit._core.requestOperation(QuantumOperationTypes.X, this);
     }
 
     /**
      * y演算を適用する
      */
-    y() {
+    y(): void {
         Qubit._core.requestOperation(QuantumOperationTypes.Y, this);
     }
 
     /**
      * z演算を適用する
      */
-    z() {
+    z(): void {
         Qubit._core.requestOperation(QuantumOperationTypes.Z, this);
     }
 
@@ -73,28 +71,28 @@ export class Qubit {
      *
      * @param angle 回転角。radianで与えられ、0 ~ 2*Math.PI
      */
-    r(angle: number) {
+    r(angle: number): void {
         Qubit._core.requestRotateOperation(QuantumOperationTypes.R, angle, this);
     }
 
     /**
      * s演算を適用する
      */
-    s() {
+    s(): void {
         Qubit._core.requestOperation(QuantumOperationTypes.S, this);
     }
 
     /**
      * t演算を適用する
      */
-    t() {
+    t(): void {
         Qubit._core.requestOperation(QuantumOperationTypes.T, this);
     }
 
     /**
      * hadamard演算を適用する
      */
-    h() {
+    h(): void {
         Qubit._core.requestOperation(QuantumOperationTypes.H, this);
     }
 
@@ -104,7 +102,7 @@ export class Qubit {
      *
      * @param controlQubit 制御量子ビット
      */
-    cnot(controlQubit: Qubit) {
+    cnot(controlQubit: Qubit): void {
         Qubit._core.requestOperation(QuantumOperationTypes.CONTROLLED_X, controlQubit, this);
     }
 
@@ -114,7 +112,7 @@ export class Qubit {
      *
      * @param controlQubit 制御量子ビット
      */
-    controlledX(controlQubit: Qubit) {
+    controlledX(controlQubit: Qubit): void {
         Qubit._core.requestOperation(QuantumOperationTypes.CONTROLLED_X, controlQubit, this);
     }
 
@@ -124,7 +122,7 @@ export class Qubit {
      *
      * @param controlQubit 制御量子ビット
      */
-    controlledY(controlQubit: Qubit) {
+    controlledY(controlQubit: Qubit): void {
         Qubit._core.requestOperation(QuantumOperationTypes.CONTROLLED_Y, controlQubit, this);
     }
 
@@ -134,7 +132,7 @@ export class Qubit {
      *
      * @param controlQubit 制御量子ビット
      */
-    controlledZ(controlQubit: Qubit) {
+    controlledZ(controlQubit: Qubit): void {
         Qubit._core.requestOperation(QuantumOperationTypes.CONTROLLED_Z, controlQubit, this);
     }
 
@@ -143,7 +141,7 @@ export class Qubit {
      *
      * @param angle 回転角
      */
-    rotateX(angle: number) {
+    rotateX(angle: number): void {
         Qubit._core.requestRotateOperation(QuantumOperationTypes.ROTATEX, angle, this);
     }
 
@@ -152,7 +150,7 @@ export class Qubit {
      *
      * @param angle 回転角
      */
-    rotateY(angle: number) {
+    rotateY(angle: number): void {
         Qubit._core.requestRotateOperation(QuantumOperationTypes.ROTATEY, angle, this);
     }
 
@@ -161,11 +159,11 @@ export class Qubit {
      *
      * @param angle 回転角
      */
-    rotateZ(angle: number) {
+    rotateZ(angle: number): void {
         Qubit._core.requestRotateOperation(QuantumOperationTypes.ROTATEZ, angle, this);
     }
 
-    toffoli(controlQubit0: Qubit, controlQubit1: Qubit) {
+    toffoli(controlQubit0: Qubit, controlQubit1: Qubit): void {
         Qubit._core.requestOperation(QuantumOperationTypes.TOFFOLI, controlQubit0, controlQubit1, this);
     }
 
@@ -185,7 +183,7 @@ export class Qubit {
         return Qubit._core.toStringQubit(this);
     }
 
-    private _createSimulated() {
+    private _createSimulated(): void {
         this.simulated = {
             clone: () => Qubit._core.cloneQubits(this),
             compositedQubits: () => Qubit._core.getCompositedQubits(this)
