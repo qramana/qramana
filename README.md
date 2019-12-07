@@ -2,6 +2,8 @@
 
  `qramana` is a TypeScript library for quantum calculation.
 
+ More info is [here](./docs/index.md).
+
 ## Quick start
 
 ### Install
