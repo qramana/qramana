@@ -1,4 +1,4 @@
-# qramana: A typescript library for quantum calculation.
+# qramana: A TypeScript library for quantum calculation.
 `qramana` is a TypeScript library for quantum calculation.
 It attempts to make it easy for users to handle quantum computing.
 These are `qramana`'s features.
@@ -22,7 +22,7 @@ qubit2.h();
 ```
 
 ## Can be implemented in browser application (e.g. browser games)
-`qramana` is a typescript library.
+`qramana` is a TypeScript library.
 Therefore, users can use `qramana` in web browser directly.
 
 ## Pick and choose background system that meke sense for you(Future)
