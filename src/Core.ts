@@ -1,4 +1,4 @@
-import { QuantumState, QuantumStateGenerator} from "@qramana/qramana-common-types";
+import { QuantumState, QuantumStateGenerator, Complex } from "@qramana/qramana-common-types";
 import { Qubit, QubitParameter } from "./Qubit";
 import { QuantumOperationTypes, CloneQubitsResult } from "./types";
 import * as methods from "./methods";
@@ -174,6 +174,11 @@ export class Core {
             index: compositedQubitMapElements.findIndex(mapElement => mapElement.qubit === qubit),
             qubits: newQubitMapElements.map(mapElemement => mapElemement.qubit)
         };
+    }
+
+    getStateVectorFromQubit(qubit: Qubit): Complex[] {
+        const targetQuantumState = this._lookupQubitQuantumStateMapElementFromQubit(qubit).quantumState;
+        targetQuantumState.simulated.getStateVector
 
     }
 

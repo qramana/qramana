@@ -56,6 +56,18 @@ export class QuantumStateJsqubits extends QuantumState {
                 const newQuantumState = new QuantumStateJsqubits(0);
                 newQuantumState._qstate = this._qstate.normalize(); // 厳密にはcloneではないが、qramanaでnormalizeされていないQStateを利用するケースは無い
                 return newQuantumState;
+            },
+            getStateVector: () => {
+                const vectorLength = this._qstate.numBits();
+                const amplitudes = [];
+                for (let i = 0; i < vectorLength; i++) {
+                    const value = this._qstate.amplitude(i);
+                    amplitudes.push({
+                        re: value.real,
+                        im: value.imaginary
+                    });
+                }
+                return amplitudes;
             }
         };
     }
