@@ -1,6 +1,6 @@
 {
   "name": "@qramana/qramana",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "TypeScript library for quantum calculation",
   "main": "lib/index.js",
   "scripts": {
@@ -40,7 +40,7 @@
     "typescript": "~3.7.0"
   },
   "dependencies": {
-    "@qramana/qramana-common-types": "0.0.3",
+    "@qramana/qramana-common-types": "0.0.4",
     "jsqubits": "^1.1.1"
   }
 }

@@ -178,8 +178,7 @@ export class Core {
 
     getStateVectorFromQubit(qubit: Qubit): Complex[] {
         const targetQuantumState = this._lookupQubitQuantumStateMapElementFromQubit(qubit).quantumState;
-        targetQuantumState.simulated.getStateVector
-
+        return targetQuantumState.simulated.getStateVector();
     }
 
     /**
