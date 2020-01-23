@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 0.0.6
+
+* `Qubit#simualted.getStateVector()` を追加
+
 ## 0.0.5
 
 * `Qubit#simualted` を追加

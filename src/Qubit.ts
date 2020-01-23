@@ -1,5 +1,5 @@
 import { Core } from "./Core";
-import { QuantumStateInitializeType } from "@qramana/qramana-common-types";
+import { QuantumStateInitializeType, Complex } from "@qramana/qramana-common-types";
 import { QuantumOperationTypes, CloneQubitsResult } from "./types";
 
 /**
@@ -24,7 +24,12 @@ type SimulatorLimitedQubitMethods = {
     /**
      * Qubitが含まれる量子状態のQubit数を返す
      */
-    compositedQubits: () => Qubit[]
+    compositedQubits: () => Qubit[];
+
+    /**
+     * 状態ベクトルを取得返す
+     */
+    getStateVector: () => Complex[]
 };
 
 /**
@@ -186,7 +191,8 @@ export class Qubit {
     private _createSimulated(): void {
         this.simulated = {
             clone: () => Qubit._core.cloneQubits(this),
-            compositedQubits: () => Qubit._core.getCompositedQubits(this)
+            compositedQubits: () => Qubit._core.getCompositedQubits(this),
+            getStateVector: () => Qubit._core.getStateVectorFromQubit(this)
         };
     }
 }
