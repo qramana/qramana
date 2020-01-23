@@ -29,7 +29,7 @@ type SimulatorLimitedQubitMethods = {
     /**
      * 状態ベクトルを取得返す
      */
-    getStateVector: () => Complex[];
+    getStateVector: () => Complex[]
 };
 
 /**
