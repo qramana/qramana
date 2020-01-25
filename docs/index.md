@@ -1,4 +1,3 @@
-
 # qramana: A TypeScript library for quantum calculation.
 
 `qramana` is a TypeScript library for quantum calculation.
@@ -27,8 +26,9 @@ qubit1.h();
 qubit2.cnot(qubit1); // generate synthetic quantum system
 qubit2.x(); // keep indipendent qubit interface
 ```
+You can see qubit interface reference [here](./apidocs/qubit.md).
 
-## Can be implemented in JavaScript application (e.g. browser game, Node.js app)
+## Can be implemented in JavaScript application (e.g. browser content, Node.js app)
 
 `qramana` can be installed via npm.
 Therefore, users can develop with TypeScript and use `qramana` in web browser directly.
@@ -36,10 +36,14 @@ Therefore, users can develop with TypeScript and use `qramana` in web browser di
 ## Pick and choose background system that make sense for you(Future)
 
 `qramana` can choose some backend system.
-If you want to add new backend system, you can use it by implementing driver.
+If you want to add new backend systems, you can use it by implementing driver.
 Example of the driver is [here](../src/QuantumStateImpl/QuantumStateJsqubits.ts).
 Currently, `qramana` uses [jsqubits](http://davidbkemp.github.io/jsqubits/) for its backend.
 
-# example
+## Tutorial
+
+[Tutorial](./tutorial.md)
+
+## example
 
 Sample codes are [here](../example).
