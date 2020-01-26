@@ -6,6 +6,15 @@
 
  `qramana` is a TypeScript library for quantum calculation.
 
+## Feature
+
+ - Can handle qubit with only Qubit interface
+ - No need to consider synthetic quantum systems
+ - Can be implemented in JavaScript application (e.g. browser, Node.js)
+ - Pick and choose background system that make sense for you
+
+More detail, see [here](docs/feature.md).
+
 ## Quick start
 
 ### Install
@@ -53,6 +62,10 @@ Then you can run unit test.
 ```
 $ npm run test
 ```
+
+## LICENSE
+
+MIT
 
 ## Acknowledgement
 
