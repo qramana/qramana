@@ -327,6 +327,48 @@ describe("test Qubit", () => {
             expect(res).toBe(1);
             done();
         });
+        it("change state after measure", (done: any) => {
+            const qubit = new q.Qubit({ value: 0 });
+            qubit.h();
+            const res = qubit.measure();
+            const stateVector = qubit.simulated.getStateVector();
+            expect(stateVector).not.toEqual([
+                {
+                    re: 0.7071067811865476,
+                    im: 0
+                },
+                {
+                    re: 0.7071067811865476,
+                    im: 0
+                }
+            ]);
+
+            if (res === 0) {
+                expect(stateVector).toEqual([
+                    {
+                        re: 1,
+                        im: 0
+                    },
+                    {
+                        re: 0,
+                        im: 0
+                    }
+                ]);
+            } else {
+                expect(stateVector).toEqual([
+                    {
+                        re: 0,
+                        im: 0
+                    },
+                    {
+                        re: 1,
+                        im: 0
+                    }
+                ]);
+            }
+            done();
+        });
+
     });
     describe("simulated", () => {
         describe("clone", () => {
