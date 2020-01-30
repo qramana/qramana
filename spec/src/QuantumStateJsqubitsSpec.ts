@@ -65,7 +65,127 @@ describe("test QuantumStateJsQubits", () => {
                 done();
             });
         });
+        describe("#getStateVector", () => {
+            it("0 state", (done: any) => {
+                const state = new q.QuantumStateJsqubits(0);
+                expect(state.simulated.getStateVector()).toEqual(
+                    [
+                        {
+                            re: 1,
+                            im: 0
+                        },
+                        {
+                            re: 0,
+                            im: 0
+                        }
+                    ]);
+                done();
+            });
+            it("1 state", (done: any) => {
+                const state = new q.QuantumStateJsqubits(1);
+                expect(state.simulated.getStateVector()).toEqual(
+                    [
+                        {
+                            re: 0,
+                            im: 0
+                        },
+                        {
+                            re: 1,
+                            im: 0
+                        }
+                    ]);
+                done();
+            });
+            it("00 state", (done: any) => {
+                const state = (new q.QuantumStateJsqubits(0)).merge(new q.QuantumStateJsqubits(0));
+                expect(state.simulated.getStateVector()).toEqual(
+                    [
+                        {
+                            re: 1,
+                            im: 0
+                        },
+                        {
+                            re: 0,
+                            im: 0
+                        },
+                        {
+                            re: 0,
+                            im: 0
+                        },
+                        {
+                            re: 0,
+                            im: 0
+                        }
+                    ]);
+                done();
+            });
+            it("|00>+|11> maximally entangled state", (done: any) => {
+                const state0 = new q.QuantumStateJsqubits(0);
+                const state1 = new q.QuantumStateJsqubits(0);
+                const state = state0.merge(state1);
 
+                state.h(0);
+                state.cnot(0, 1);
+                expect(state.simulated.getStateVector()).toEqual(
+                    [
+                        {
+                            re: 0.7071067811865476,
+                            im: 0
+                        },
+                        {
+                            re: 0,
+                            im: 0
+                        },
+                        {
+                            re: 0,
+                            im: 0
+                        },
+                        {
+                            re: 0.7071067811865476,
+                            im: 0
+                        }
+                    ]);
+                done();
+            });
+            it("000 state", (done: any) => {
+                const state = (new q.QuantumStateJsqubits(0)).merge(new q.QuantumStateJsqubits(0)).merge(new q.QuantumStateJsqubits(0));
+                expect(state.simulated.getStateVector()).toEqual(
+                    [
+                        {
+                            re: 1,
+                            im: 0
+                        },
+                        {
+                            re: 0,
+                            im: 0
+                        },
+                        {
+                            re: 0,
+                            im: 0
+                        },
+                        {
+                            re: 0,
+                            im: 0
+                        },
+                        {
+                            re: 0,
+                            im: 0
+                        },
+                        {
+                            re: 0,
+                            im: 0
+                        },
+                        {
+                            re: 0,
+                            im: 0
+                        },
+                        {
+                            re: 0,
+                            im: 0
+                        }
+                    ]);
+                done();
+            });
+        });
     });
-
 });

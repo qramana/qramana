@@ -58,7 +58,7 @@ export class QuantumStateJsqubits extends QuantumState {
                 return newQuantumState;
             },
             getStateVector: () => {
-                const vectorLength = this._qstate.numBits();
+                const vectorLength = Math.pow(2, this._qstate.numBits());
                 const amplitudes = [];
                 for (let i = 0; i < vectorLength; i++) {
                     const value = this._qstate.amplitude(i);
