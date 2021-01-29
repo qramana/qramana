@@ -27,12 +27,12 @@ type SimulatorLimitedQubitMethods = {
     compositedQubits: () => Qubit[];
 
     /**
-     * 状態ベクトルを取得返す
+     * 状態ベクトルを取得する
      */
     getStateVector: () => Complex[];
 
     /**
-     * 状態ベクトルを合成系にする
+     * 状態ベクトルを合成する
      */
     mergeStateVector: (qubits: Qubit[] | Qubit) => void
 };
