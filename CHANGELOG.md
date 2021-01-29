@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 0.0.8
+
+* `Qubit#simulated.mergeStateVector()` を追加
+
 ## 0.0.7
 
 * `Qubit#simualted.getStateVector()` が正しい状態ベクトルを返していなかった問題の修正

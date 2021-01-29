@@ -415,6 +415,24 @@ describe("test Qubit", () => {
                 done();
             });
         });
+
+        describe("mergeQubits", () => {
+            it("qubits", (done: any) => {
+                const qubits: q.Qubit[] = [new q.Qubit({ value: 1 })];
+                for (let i = 1; i < 4; i++) {
+                    const qubit = new q.Qubit({ value: 0 });
+                    qubits[0].simulated.mergeStateVector(qubit);
+                    qubits.push(qubit);
+                }
+                for (let i = 1; i < 4; i++) {
+                    expect(qubits[0].toString()).toEqual(qubits[i].toString());
+                }
+                for (let i = 1; i < 4; i++) {
+                    expect(qubits[0].simulated.getStateVector()).toEqual(qubits[i].simulated.getStateVector());
+                }
+                done();
+            });
+        });
     });
 
 });

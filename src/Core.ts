@@ -182,6 +182,23 @@ export class Core {
     }
 
     /**
+     * Qubitの内部状態ベクトルを統合する
+     *
+     * 各Qubitの状態ベクトルが独立である場合は配列順にテンソル積される
+     * 合成済みの系が含まれる場合、合成順はその系を1まとめにして扱う
+     *
+     * @param qubits 状態ベクトルを統合するQubit配列
+     */
+    mergeStateVector(qubits: Qubit[]): void {
+        const qubitMapElements = qubits.map(qubit => this._lookupQubitQuantumStateMapElementFromQubit(qubit));
+        const baseElement = qubitMapElements[0];
+        qubitMapElements.slice(1).forEach((targetElement) => {
+            if (baseElement.quantumState !== targetElement.quantumState) {
+                this._mergeQubitMapElement(baseElement, targetElement);
+            }
+        });
+    }
+    /**
      * 単一量子ビットの量子操作
      */
     _requestOperationSingleQubit(quantumOperationType: QuantumOperationTypes, mapElement: QubitQuantumStateMapElement): void {
