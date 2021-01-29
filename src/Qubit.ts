@@ -29,7 +29,12 @@ type SimulatorLimitedQubitMethods = {
     /**
      * 状態ベクトルを取得返す
      */
-    getStateVector: () => Complex[]
+    getStateVector: () => Complex[];
+
+    /**
+     * 状態ベクトルを合成系にする
+     */
+    mergeStateVector: (qubits: Qubit[] | Qubit) => void
 };
 
 /**
@@ -192,7 +197,11 @@ export class Qubit {
         this.simulated = {
             clone: () => Qubit._core.cloneQubits(this),
             compositedQubits: () => Qubit._core.getCompositedQubits(this),
-            getStateVector: () => Qubit._core.getStateVectorFromQubit(this)
+            getStateVector: () => Qubit._core.getStateVectorFromQubit(this),
+            mergeStateVector: (qubits: Qubit[] | Qubit) => {
+                if (!Array.isArray(qubits)) qubits = [qubits];
+                Qubit._core.mergeStateVector([this, ...qubits]);
+            }
         };
     }
 }
